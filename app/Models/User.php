@@ -41,4 +41,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    // Userモデル
+    // 
+    // usersテーブル(親)とarticlesテーブル(子)のリレーション
+    
+    public function articles(){
+        return $this -> hasMany('App\Models\Article');
+    }   
 }
