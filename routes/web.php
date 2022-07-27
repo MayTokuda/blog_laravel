@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/dashbord', [App\Http\Controllers\HomeController::class, 'index'])->name('dashbord');
+
+Route::get('/post_create', [App\Http\Controllers\HomeController::class, 'create'])->name('post_create');
