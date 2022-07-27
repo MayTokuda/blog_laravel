@@ -25,7 +25,7 @@ class HomeController extends Controller
     // ブログ一覧表示画面--->画面あり
     public function index()
     {
-        return view('home');
+        return view('dashbord');
     }
 
 
@@ -37,7 +37,7 @@ class HomeController extends Controller
     // ブログ新規入力フォーム--->画面あり
     public function create()
     {
-        //
+        return view('create');
     }
 
 
@@ -76,7 +76,7 @@ class HomeController extends Controller
     // 変更フォーム(既存の値が入っている状態)--->画面あり
     public function edit($id)
     {
-        //
+        // 
     }
 
 
