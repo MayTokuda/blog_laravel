@@ -31,3 +31,4 @@ Route::get('/post_create', [App\Http\Controllers\HomeController::class, 'create'
 
 
 // 松野ルーティング
+Route::post('/delete', [App\Http\Controllers\HomeController::class, 'delete'])->name('delete');
