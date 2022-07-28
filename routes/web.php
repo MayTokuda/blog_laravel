@@ -19,6 +19,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// 徳田ルーティング
 Route::get('/dashbord', [App\Http\Controllers\HomeController::class, 'index'])->name('dashbord');
 
+
+// 足立ルーティング
 Route::get('/post_create', [App\Http\Controllers\HomeController::class, 'create'])->name('post_create');
+
+
+// 倉田ルーティング
+
+
+// 松野ルーティング

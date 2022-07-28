@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+// 使用するModels
+use App\Models\Article;
+use App\Models\Comment;
+use App\Models\Tag;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
