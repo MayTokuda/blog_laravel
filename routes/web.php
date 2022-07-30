@@ -28,6 +28,7 @@ Route::get('/post_create', [App\Http\Controllers\HomeController::class, 'create'
 
 
 // 倉田ルーティング
+Route::get('/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
 
 
 // 松野ルーティング
