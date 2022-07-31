@@ -14,7 +14,19 @@
                         </div>
                     @endif
 
-                    {{ __('show(記事を詳細に表示する)') }}
+                    <!-- {{ __('show(記事を詳細に表示する)') }} -->
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2>{{ $article->title }}</h2>
+                            <a href=""><button type="button" class="btn btn-secondary">編集</button></a></td>
+                            <a href=""><button type="button" class="btn btn-secondary">削除</button></a></td>
+                            <p>作成日：{{ $article->created_at }}　　
+                                更新日：{{ $article->updated_at }}</更新日：>
+                            <p>{{ $article->body }}</p>
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
