@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->bigIncrements('id')->comment('記事の番号');
             $table->unsignedBigInteger('user_id')->comment('ユーザー名(外部キー)');
             $table->string('image')->comment('トップの画像');
-            $table->string('tittle')->comment('記事タイトル');
+            $table->string('title')->comment('記事タイトル');
             $table->text('body')->comment('記事本文');
             $table->timestamps();
         });
