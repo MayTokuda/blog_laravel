@@ -31,7 +31,9 @@ Route::get('/post_create', [App\Http\Controllers\HomeController::class, 'create'
 Route::post('/post_insert', [App\Http\Controllers\HomeController::class, 'store'])->name('post_store');
 
 // 倉田ルーティング
+//編集画面の表示
 Route::get('/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
+Route::post('/update', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 
 // 松野ルーティング
 Route::post('/delete', [App\Http\Controllers\HomeController::class, 'delete'])->name('delete');
