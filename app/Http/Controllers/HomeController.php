@@ -43,7 +43,13 @@ class HomeController extends Controller
     // ブログ新規入力フォーム--->画面あり
     public function create()
     {
-        return view('create');
+        $article = new Article();
+        $data_article = ['article' => $article];
+
+        $tag = new Tag();
+        $data_tag = ['tag' => $tag];
+
+        return view('create' , compact($data_article , $data_tag));
     }
 
 
@@ -56,7 +62,26 @@ class HomeController extends Controller
     // 追加処理(createの登録ボタン)--->画面なし
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'image' => 'required',
+            'title' => 'required|max:255',
+            'tag' => 'required',
+            'body' => 'required'
+        ]);
+
+        $article = new Article();
+        $article->user_id = $request->user()->id;
+        $article->image = $request->image;
+        $article->title = $request->title;
+        $article->body = $request->body;
+        $article->save();
+
+        $tag = new Tag();
+        $tag->article_id = $request->article()->id;
+        $tag->tag = $request->tag;
+        $tag->save();
+
+        return redirect(route('dashbord'));
     }
 
 

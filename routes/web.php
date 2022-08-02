@@ -25,7 +25,7 @@ Route::get('/dashbord', [App\Http\Controllers\HomeController::class, 'index'])->
 
 // 足立ルーティング
 Route::get('/post_create', [App\Http\Controllers\HomeController::class, 'create'])->name('post_create');
-
+Route::post('/post_insert', [App\Http\Controllers\HomeController::class, 'store'])->name('post_store');
 
 // 倉田ルーティング
 
