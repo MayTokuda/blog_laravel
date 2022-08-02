@@ -26,13 +26,13 @@ Route::get('/dashbord', [App\Http\Controllers\HomeController::class, 'index'])->
 Route::get('/show/{id}', [App\Http\Controllers\HomeController::class, 'show']);
 
 
+// 足立ルーティング
 Route::get('/post_create', [App\Http\Controllers\HomeController::class, 'create'])->name('post_create');
+Route::post('/post_insert', [App\Http\Controllers\HomeController::class, 'store'])->name('post_store');
 
 // 倉田ルーティング
-
+Route::get('/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
 
 // 松野ルーティング
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/delete', [App\Http\Controllers\HomeController::class, 'delete'])->name('delete');
 

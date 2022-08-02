@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+// 使用するModels
+use App\Models\Article;
+use App\Models\Comment;
+use App\Models\Tag;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -39,7 +45,13 @@ class HomeController extends Controller
     // ブログ新規入力フォーム--->画面あり
     public function create()
     {
-        return view('create');
+        $article = new Article();
+        $data_article = ['article' => $article];
+
+        $tag = new Tag();
+        $data_tag = ['tag' => $tag];
+
+        return view('create' , compact($data_article , $data_tag));
     }
 
 
@@ -52,7 +64,39 @@ class HomeController extends Controller
     // 追加処理(createの登録ボタン)--->画面なし
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'image' => 'required',
+            'title' => 'required|max:255',
+            'tag' => 'required',
+            'body' => 'required'
+        ]);
+
+        // 新規記事をarticlesテーブルに入れる処理
+        $article = new Article();
+        $article->user_id = $request->user()->id;
+        $article->image = $request->image;
+        $article->title = $request->title;
+        $article->body = $request->body;
+        $article->save();
+
+        // 新規タグをtagsテーブルに入れる処理
+        // $tag = new Tag();
+        // $tag->id = $request->_______;
+        // $tag->name = $request->name;
+        // $tag->save();
+
+        // 投稿に紐付けされるタグのidを配列化
+        $tags = [];
+        $tags_id = [];
+        foreach ($tags as $tag) {
+            array_push($tags_id, $tag['id']);
+        };
+
+        // 投稿ににタグ付するために、attachメソッドをつかい
+        // モデルを結びつけている中間テーブルにレコードを挿入する
+        $article->tags()->attach($tags_id);
+
+        return redirect(route('dashbord'));
     }
 
 
