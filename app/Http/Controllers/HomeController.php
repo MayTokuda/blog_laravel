@@ -78,23 +78,16 @@ class HomeController extends Controller
         $article->title = $request->title;
         $article->body = $request->body;
         $article->save();
-
-        // 新規タグをtagsテーブルに入れる処理
-        // $tag = new Tag();
-        // $tag->id = $request->_______;
-        // $tag->name = $request->name;
-        // $tag->save();
-
-        // 投稿に紐付けされるタグのidを配列化
-        $tags = [];
-        $tags_id = [];
-        foreach ($tags as $tag) {
-            array_push($tags_id, $tag['id']);
-        };
+    
+        // 新規タグの名前をtagsテーブルに入れる処理
+        $tag = new Tag();
+        $tag->name = $request->tag;
+        $tag->save();
 
         // 投稿ににタグ付するために、attachメソッドをつかい
         // モデルを結びつけている中間テーブルにレコードを挿入する
-        $article->tags()->attach($tags_id);
+        // 中間テーブルではarticle_idとtag_idを結びつける処理を行う
+        $article->tags()->attach($tag->id);
 
         return redirect(route('dashbord'));
     }
