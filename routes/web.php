@@ -20,7 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 // 徳田ルーティング
+// 記事一覧画面の表示
 Route::get('/dashbord', [App\Http\Controllers\HomeController::class, 'index'])->name('dashbord');
+// 記事詳細画面の表示
+Route::get('/show/{id}', [App\Http\Controllers\HomeController::class, 'show']);
 
 
 // 足立ルーティング
@@ -30,6 +33,6 @@ Route::post('/post_insert', [App\Http\Controllers\HomeController::class, 'store'
 // 倉田ルーティング
 Route::get('/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
 
-
 // 松野ルーティング
 Route::post('/delete', [App\Http\Controllers\HomeController::class, 'delete'])->name('delete');
+

@@ -31,7 +31,9 @@ class HomeController extends Controller
     // ブログ一覧表示画面--->画面あり
     public function index()
     {
-        return view('dashbord');
+        $articles = Article::all();
+
+        return view('dashbord', ['articles' => $articles]);
     }
 
 
@@ -107,7 +109,13 @@ class HomeController extends Controller
     // ブログ詳細表示--->画面あり
     public function show($id)
     {
-        //
+        $article = Article::find($id);
+
+        if (is_null($article)) {
+            \Session::flash('err_msg', 'データがありません');
+            return redirect(route('show'));
+        }
+        return view('show', ['article' => $article]);
     }
 
 
