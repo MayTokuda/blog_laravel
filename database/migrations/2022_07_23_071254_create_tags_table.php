@@ -15,7 +15,6 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('タグの番号');
-            $table->unsignedBigInteger('article_id')->comment('記事の番号(外部キー)');
             $table->text('name')->comment('タグの名前');
             $table->timestamps();
         });

@@ -22,9 +22,10 @@ class Article extends Model
     // Articleモデル(親)
     // 
     // articlesテーブル(親)とtagsテーブル(子)のリレーション
+    // 多対多のリレーション
     
     public function tags(){
-        return $this -> hasMany('App\Models\Tag');
+        return $this -> belongsToMany('App\Models\Tag');
     }   
 
 

@@ -12,8 +12,9 @@ class Tag extends Model
     // Tagモデル(子)
     // 
     // articlesテーブル(親)とtagsテーブル(子)のリレーション
+    // 多対多のリレーション
     
-    public function tag(){
-        return $this -> belongsTo('App\Models\Tag');
+    public function articles(){
+        return $this -> belongsToMany('App\Models\Article');
     }  
 }
