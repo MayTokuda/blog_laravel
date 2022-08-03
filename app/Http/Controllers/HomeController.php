@@ -141,8 +141,34 @@ class HomeController extends Controller
     // 変更処理(editの更新ボタン)--->画面なし
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'image' => 'required',
+            'title' => 'required|max:255',
+            'tag' => 'required',
+            'body' => 'required'
+        ]);
+
+        // 更新記事をarticlesテーブルに入れる処理
+        $article = new Article();
+        $article->user_id = $request->user()->id;
+        $article->image = $request->image;
+        $article->title = $request->title;
+        $article->body = $request->body;
+        $article->save();
+    
+        // 更新タグの名前をtagsテーブルに入れる処理
+        $tag = new Tag();
+        $tag->name = $request->tag;
+        $tag->save();
+
+        // 投稿ににタグ付するために、attachメソッドをつかい
+        // モデルを結びつけている中間テーブルにレコードを挿入する
+        // 中間テーブルではarticle_idとtag_idを結びつける処理を行う
+        $article->tags()->attach($tag->id);
+
+        return redirect(route('dashbord'));
     }
+
 
 
     /**
