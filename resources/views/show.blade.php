@@ -18,11 +18,11 @@
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <h2>{{ $article->title }}</h2>
+                            <p>{{ $article->body }}</p>
+                            <p>作成日：{{ substr($article->created_at,0,11) }} &ensp;&ensp; 更新日：{{ substr($article->updated_at,0,11) }}</p>
                             <a href=""><button type="button" class="btn btn-secondary">編集</button></a></td>
                             <a href=""><button type="button" class="btn btn-secondary">削除</button></a></td>
-                            <p>作成日：{{ $article->created_at }}　　
-                                更新日：{{ $article->updated_at }}</更新日：>
-                            <p>{{ $article->body }}</p>
+                            <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">ブログの一覧に戻る</button></a></td>
 
                         </div>
                     </div>
