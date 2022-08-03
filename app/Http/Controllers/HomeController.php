@@ -118,10 +118,16 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // 変更フォーム(既存の値が入っている状態)--->画面あり
+    // ブログ編集フォームを表示する--->画面あり
     public function edit($id)
     {
-        // 
+        $article = Article::find($id);
+
+        if (is_null($article)) {
+            \Session::flash('err_msg', 'データがありません');
+            return redirect(route('show'));
+        }
+        return view('edit', ['article' => $article]);
     }
 
 

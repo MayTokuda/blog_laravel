@@ -32,7 +32,8 @@ Route::post('/post_insert', [App\Http\Controllers\HomeController::class, 'store'
 
 // 倉田ルーティング
 //編集画面の表示
-Route::get('/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
+Route::get('/edit/{id}', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
+//編集登録機能
 Route::post('/update', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 
 // 松野ルーティング
