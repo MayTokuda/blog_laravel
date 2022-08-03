@@ -31,7 +31,8 @@ class HomeController extends Controller
     // ブログ一覧表示画面--->画面あり
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::latest()->get();
+        // $articles = Article::all();
 
         return view('dashbord', ['articles' => $articles]);
     }

@@ -28,8 +28,8 @@
                                 <dt>本文</dt>
                                 <dd><textarea name="body"></textarea></dd>
                             </dl>
-                            <button type="submit">投稿する</button>
-                            <a href="{{ route('dashbord') }}">キャンセル</a>
+                            <button type="button" class="btn btn-secondary">投稿する</button>
+                            <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">ブログの一覧に戻る</button></a></td>
                         </form>
                     </main>
                 </div>
