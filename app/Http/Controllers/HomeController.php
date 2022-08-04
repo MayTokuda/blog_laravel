@@ -150,6 +150,6 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
-        
+
     }
 }
