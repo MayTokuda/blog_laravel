@@ -31,7 +31,8 @@ class HomeController extends Controller
     // ブログ一覧表示画面--->画面あり
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::latest()->get();
+        // $articles = Article::all();
 
         return view('dashbord', ['articles' => $articles]);
     }
@@ -51,7 +52,7 @@ class HomeController extends Controller
         $tag = new Tag();
         $data_tag = ['tag' => $tag];
 
-        return view('create' , compact($data_article , $data_tag ,));
+        return view('create' , compact('data_article' , 'data_tag'));
     }
 
 
@@ -188,5 +189,6 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+        
     }
 }
