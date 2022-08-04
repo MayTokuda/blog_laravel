@@ -30,6 +30,7 @@
                             <tr>
                                 {{-- <th>記事番号</th> --}}
                                 <th>記事タイトル</th>
+                                <th>写真</th>
                                 <th>記事本文</th>
                                 <th>日付</th>
                             </tr>
@@ -39,6 +40,7 @@
                             <tr>
                                 {{-- <td>{{ $article->id }}</td> --}}
                                 <td><a href="/show/{{ $article->id }}">{{ $article->title }}</a></td>
+                                <td><img class="article-img" src="storage/{{ $article->image }}" alt=""></td>
                                 <td>{{ $article->body }}</td>
                                 <td>{{ substr($article->updated_at,0,11) }}</td>
                             </tr>

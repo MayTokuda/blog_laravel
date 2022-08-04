@@ -52,7 +52,7 @@ class HomeController extends Controller
         $tag = new Tag();
         $data_tag = ['tag' => $tag];
 
-        return view('create' , compact($data_article , $data_tag));
+        return view('create' , compact('data_article' , 'data_tag'));
     }
 
 
@@ -109,7 +109,10 @@ class HomeController extends Controller
             \Session::flash('err_msg', 'データがありません');
             return redirect(route('show'));
         }
-        return view('show', ['article' => $article]);
+        // return view('show', ['article' => $article]);
+        return view('show')->with([
+            'article' => $article,
+        ]);
     }
 
 
