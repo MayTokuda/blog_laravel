@@ -51,7 +51,7 @@ class HomeController extends Controller
         $tag = new Tag();
         $data_tag = ['tag' => $tag];
 
-        return view('create' , compact($data_article , $data_tag));
+        return view('create' , compact($data_article , $data_tag ,));
     }
 
 
@@ -123,10 +123,6 @@ class HomeController extends Controller
     {
         $article = Article::find($id);
 
-        if (is_null($article)) {
-            \Session::flash('err_msg', 'データがありません');
-            return redirect(route('show'));
-        }
         return view('edit', ['article' => $article]);
     }
 
@@ -139,25 +135,30 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     // 変更処理(editの更新ボタン)--->画面なし
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $this->validate($request, [
-            'image' => 'required',
-            'title' => 'required|max:255',
-            'tag' => 'required',
-            'body' => 'required'
-        ]);
+        //ブログのデータを受け取る
 
-        // 更新記事をarticlesテーブルに入れる処理
-        $article = new Article();
-        $article->user_id = $request->user()->id;
-        $article->image = $request->image;
-        $article->title = $request->title;
+        // $this->validate($request, [
+        //     'image' => 'required',
+        //     'title' => 'required|max:255',
+        //     'tag' => 'required',
+        //     'body' => 'required'
+        // ]);
+
+        // 更新記事をarticlesテーブルに入れる処理（更新）
+        $article = Article::find(1);
+        // dd($article);
+        // $article->user_id = $request->user()->id;
+        // $article->image = $request->image;
+        // $article->title = $request->title;
         $article->body = $request->body;
+        // $article->body = 'テスト';
         $article->save();
+        dd($request);
     
         // 更新タグの名前をtagsテーブルに入れる処理
-        $tag = new Tag();
+        $tag = Tag::find($id);
         $tag->name = $request->tag;
         $tag->save();
 
