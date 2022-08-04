@@ -52,7 +52,7 @@ class HomeController extends Controller
         $tag = new Tag();
         $data_tag = ['tag' => $tag];
 
-        return view('create' , compact($data_article , $data_tag));
+        return view('create' , compact('data_article' , 'data_tag'));
     }
 
 
