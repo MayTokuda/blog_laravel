@@ -35,7 +35,7 @@ Route::post('/post_insert', [App\Http\Controllers\HomeController::class, 'store'
 Route::get('/edit/{id}', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
 //編集登録機能
 // Route::post('/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
-Route::post('/update', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
+Route::post('/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 
 // 松野ルーティング
 Route::post('/delete', [App\Http\Controllers\HomeController::class, 'delete'])->name('delete');

@@ -16,10 +16,12 @@
 
                     {{ __('編集') }}
                     <main class="container">
-                    <form action="{{ route('update') }}" method="post">
+                    <form action="{{ route('update', ['id' => $article->id ] ) }}" method="POST">
                         @csrf 
                         <dl class="form-list">
                             <dt>画像</dt>
+                            <!-- ラジオボックスを入れる -->
+                            
                             <dd><input type="file" name="image" value="{{$article->image}}" accept="image/png,image/jpeg"></dd>
                             <dt>タイトル</dt>
                             <dd><input type="text" name="title" value="{{$article->title}}"></dd>
