@@ -119,10 +119,16 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // 変更フォーム(既存の値が入っている状態)--->画面あり
+    // ブログ編集フォームを表示する--->画面あり
     public function edit($id)
     {
-        // 
+        $article = Article::find($id);
+        if (is_null($article)) {
+            \Session::flash('err_msg', 'データがありません');
+            return redirect(route('show'));
+        }
+
+        return view('edit', ['article' => $article]);
     }
 
 
@@ -136,8 +142,41 @@ class HomeController extends Controller
     // 変更処理(editの更新ボタン)--->画面なし
     public function update(Request $request, $id)
     {
-        //
+        //ブログのデータを受け取る
+
+        // $this->validate($request, [
+        //     'image' => 'required',
+        //     'title' => 'required|max:255',
+        //     'tag' => 'required',
+        //     'body' => 'required'
+        // ]);
+
+        // 更新記事をarticlesテーブルに入れる処理（更新）
+        $article = Article::find($id);
+        
+        // if文で三つ処理を追加
+        if ($request->image != null) {
+            $article->image = $request->image;
+        }
+        $article->title = $request->title;
+        $article->body = $request->body;
+
+        $article->save();
+        dd($request);
+    
+        // 更新タグの名前をtagsテーブルに入れる処理
+        $tag = Tag::find();
+        $tag->name = $request->tag;
+        $tag->save();
+
+        // 投稿ににタグ付するために、attachメソッドをつかい
+        // モデルを結びつけている中間テーブルにレコードを挿入する
+        // 中間テーブルではarticle_idとtag_idを結びつける処理を行う
+        $article->tags()->attach($tag->id);
+
+        return redirect(route('dashbord'));
     }
+
 
 
     /**
