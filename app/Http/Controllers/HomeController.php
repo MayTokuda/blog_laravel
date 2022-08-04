@@ -188,7 +188,22 @@ class HomeController extends Controller
     // 削除処理(showの削除ボタン)--->画面なし
     public function destroy($id)
     {
-        //
-        
+
+	if (empty($article)) {
+            \Session::flash('err_msg', 'データがありません');
+            return redirect(route('dashbord'));
+        }
+
+	//try {
+	   // ブログを削除
+
+        // $article = Article::destroy($id);
+        //} catch(\Throwable $e ){
+        //abort(500);		
+		//}
+
+       
+        \Session::flash('err_msg', '削除しました。');
+        return view('destroy', ['article' => $article]);
     }
 }
