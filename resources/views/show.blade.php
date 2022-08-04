@@ -18,6 +18,7 @@
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <h2>{{ $article->title }}</h2>
+                            <img class="article-img" src="{{ \Storage::url($article->image) }}" alt="">
                             <p>{{ $article->body }}</p>
                             <p>作成日：{{ substr($article->created_at,0,11) }} &ensp;&ensp; 更新日：{{ substr($article->updated_at,0,11) }}</p>
                             <a href="/edit/{{ $article->id }}"><button type="button" class="btn btn-secondary">編集</button></a></td>

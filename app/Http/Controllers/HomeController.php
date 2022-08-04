@@ -109,7 +109,10 @@ class HomeController extends Controller
             \Session::flash('err_msg', 'データがありません');
             return redirect(route('show'));
         }
-        return view('show', ['article' => $article]);
+        // return view('show', ['article' => $article]);
+        return view('show')->with([
+            'article' => $article,
+        ]);
     }
 
 
