@@ -16,7 +16,7 @@
 
                     {{ __('create(新規記事投稿)') }}
                     <main class="container">
-                        <form action="{{ route('post_store') }}" method="post">
+                        <form action="{{ route('post_store') }}" method="post" enctype="multipart/form-data">
                             @csrf 
                             <dl class="form-list">
                                 <dt>画像</dt>

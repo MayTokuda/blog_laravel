@@ -40,7 +40,7 @@
                             <tr>
                                 {{-- <td>{{ $article->id }}</td> --}}
                                 <td><a href="/show/{{ $article->id }}">{{ $article->title }}</a></td>
-                                <td><img class="article-img" src="storage/{{ $article->image }}" alt=""></td>
+                                <td><img class="article-img" src="{{ \Storage::url($article->image) }}" width="75vw"></td>
                                 <td>{{ $article->body }}</td>
                                 <td>{{ substr($article->updated_at,0,11) }}</td>
                             </tr>
