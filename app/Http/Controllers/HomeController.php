@@ -53,11 +53,11 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     // ブログ新規入力フォーム--->画面あり
-    public function create()
+    public function create(Request $request)
     {
         $article = new Article();
         $data_article = ['article' => $article];
-
+        $article->user_id = $request->user()->id;
         $tag = new Tag();
         $data_tag = ['tag' => $tag];
 
@@ -81,10 +81,12 @@ class HomeController extends Controller
             'body' => 'required'
         ]);
 
+
+
         // 新規記事をarticlesテーブルに入れる処理
         $article = new Article();
         $article->user_id = $request->user()->id;
-        $article->image = $request->image;
+        $article->image = $request->file('image')->store('public'); //アップロードした画像ふぁいるをstorageに保存
         $article->title = $request->title;
         $article->body = $request->body;
         $article->save();
