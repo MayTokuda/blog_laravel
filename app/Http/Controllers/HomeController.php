@@ -144,12 +144,12 @@ class HomeController extends Controller
     {
 
     //必須項目にする処理
-        // $this->validate($request, [
+        $this->validate($request, [
         //     'image' => 'required',
-        //     'title' => 'required|max:255',
+            'title' => 'required|max:255',
         //     'tag' => 'required',
-        //     'body' => 'required'
-        // ]);
+            'body' => 'required'
+        ]);
 
         // 更新記事をarticlesテーブルに入れる処理（更新）
         $article = Article::find($id);
