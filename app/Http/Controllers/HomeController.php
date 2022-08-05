@@ -8,6 +8,9 @@ use App\Models\Comment;
 use App\Models\Tag;
 use App\Models\User;
 
+// 使用するDB
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -34,7 +37,13 @@ class HomeController extends Controller
         $articles = Article::latest()->get();
         // $articles = Article::all();
 
-        return view('dashbord', ['articles' => $articles]);
+        $tags = DB::table('tags')
+                    ->select('name')
+                    ->selectRaw('COUNT(name) as count_name')
+                    ->groupBy('name')
+                    ->get();
+
+        return view('dashbord', ['articles' => $articles , 'tags' => $tags]);
     }
 
 
