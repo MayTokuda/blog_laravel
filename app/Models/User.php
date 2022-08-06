@@ -50,4 +50,5 @@ class User extends Authenticatable
     public function articles(){
         return $this -> hasMany('App\Models\Article');
     }   
+
 }
