@@ -22,6 +22,8 @@ Auth::routes();
 // 徳田ルーティング
 // 記事一覧画面の表示
 Route::get('/dashbord', [App\Http\Controllers\HomeController::class, 'index'])->name('dashbord');
+
+Route::get('/search/{tag_id}', [App\Http\Controllers\HomeController::class, 'search']);
 // 記事詳細画面の表示
 Route::get('/show/{id}', [App\Http\Controllers\HomeController::class, 'show']);
 

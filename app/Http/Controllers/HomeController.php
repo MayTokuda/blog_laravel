@@ -25,7 +25,19 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    public function search($tag_id){
+        $articles = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
+            ->where('article_tag.tag_id', $tag_id)
+            ->get();
 
+            $tags = DB::table('tags')
+            ->select('name')
+            ->selectRaw('COUNT(name) as count_name')
+            ->groupBy('name')
+            ->get();
+        
+        return view('dashbord', ['articles' => $articles , 'tags' => $tags]);
+    }
     /**
      * Show the application dashboard.
      *
