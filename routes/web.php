@@ -38,5 +38,5 @@ Route::get('/edit/{id}', [App\Http\Controllers\HomeController::class, 'edit'])->
 Route::post('/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 
 // 松野ルーティング
-Route::post('/destroy', [App\Http\Controllers\HomeController::class, 'destroy'])->name('destroy');
+Route::post('/delete{id}', [App\Http\Controllers\HomeController::class, 'delete'])->name('delete');
 

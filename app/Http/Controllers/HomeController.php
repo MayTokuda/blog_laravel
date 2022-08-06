@@ -203,13 +203,16 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     // 削除処理(showの削除ボタン)--->画面なし
-    public function destroy($id)
-    {
+   // public function delete($id)
+    //{
+       // $article = Article::find($id);
 
-	if (empty($article)) {
-            \Session::flash('err_msg', 'データがありません');
-            return redirect(route('dashbord'));
-        }
+        //if (is_null($article)) {
+          //  \Session::flash('err_msg', 'データがありません');
+            //return redirect(route('dashbord'));
+        //}
+
+        
 
 	//try {
 	   // ブログを削除
@@ -219,8 +222,12 @@ class HomeController extends Controller
         //abort(500);		
 		//}
 
-       
-        \Session::flash('err_msg', '削除しました。');
-        return view('destroy', ['article' => $article]);
+    
+    public function delete($id){
+        $article = Article::findOrFail($id);
+        $article->delete();
+        return redirect('/dashbord');
     }
+
 }
+
