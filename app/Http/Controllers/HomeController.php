@@ -25,10 +25,14 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function search($tag_id){
+    public function search($tag_name){
+        // クエリビルダ
         $articles = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
-            ->where('article_tag.tag_id', $tag_id)
+            ->join('tags' , 'tag_id', '=', 'tags.id')
+            // 'tags.name'= $tag_name
+            ->where('tags.name', $tag_name)
             ->get();
+            // dd($articles);
 
             $tags = DB::table('tags')
             ->select('name')
@@ -50,10 +54,10 @@ class HomeController extends Controller
         // $articles = Article::all();
 
         $tags = DB::table('tags')
-                    ->select('name')
-                    ->selectRaw('COUNT(name) as count_name')
-                    ->groupBy('name')
-                    ->get();
+            ->select('name')
+            ->selectRaw('COUNT(name) as count_name')
+            ->groupBy('name')
+            ->get();
 
         return view('dashbord', ['articles' => $articles , 'tags' => $tags]);
     }
