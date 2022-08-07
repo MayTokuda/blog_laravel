@@ -24,6 +24,7 @@
                     ユーザーのブログ記事一覧<br>
 
                     <a href="{{ route('post_create') }}"><button type="button" class="btn btn-secondary">新規ブログ作成</button></a></td>
+                    <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">ブログ一覧(全て)</button></a></td>
 
                     <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
                         <thead>
@@ -57,7 +58,7 @@
                         <tbody>
                             @foreach($tags as $tag)
                             <tr>
-                                <td><a href="">{{ $tag->name }}({{ $tag->count_name }})</a></td>
+                                <td><a href="/search/{{ $tag->name }}">{{ $tag->name }}({{ $tag->count_name }})</a></td>
                             </tr>
                             @endforeach
                         </tbody>
