@@ -18,12 +18,18 @@
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <h2>{{ $article->title }}</h2>
-                            <img class="article-img" src="{{ \Storage::url($article->image) }}" alt="">
+                            <img class="article-img" src="{{ \Storage::url($article->image) }}" alt="" width="100%">
                             <p>{{ $article->body }}</p>
                             <p>タグ：{{ $article->tags()->value('name') }}</p>
                             <p>作成日：{{ substr($article->created_at,0,11) }} &ensp;&ensp; 更新日：{{ substr($article->updated_at,0,11) }}</p>
-                            <a href="/edit/{{ $article->id }}"><button type="button" class="btn btn-secondary">編集</button></a></td>
-                            <a href=""><button type="button" class="btn btn-secondary">削除</button></a></td>
+                            <a href="/edit/{{ $article->id }}"><button type="button" class="btn btn-secondary">編集</button></a></td>                                                           
+                            <td>
+                            <form action="{{ route('delete', ['id' => $article->id ] ) }}" method="POST">
+                            @csrf 
+                            <button type="submit" class="btn btn-secondary">削除</button>
+                            </form>
+                            </td>
+
                             <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">ブログの一覧に戻る</button></a></td>
                         </div>
                     </div>

@@ -22,6 +22,9 @@ Auth::routes();
 // 徳田ルーティング
 // 記事一覧画面の表示
 Route::get('/dashbord', [App\Http\Controllers\HomeController::class, 'index'])->name('dashbord');
+
+Route::get('/search/{tag_id}', [App\Http\Controllers\HomeController::class, 'search']);
+
 // 記事詳細画面の表示
 Route::get('/show/{id}', [App\Http\Controllers\HomeController::class, 'show']);
 
@@ -38,5 +41,5 @@ Route::get('/edit/{id}', [App\Http\Controllers\HomeController::class, 'edit'])->
 Route::post('/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 
 // 松野ルーティング
-Route::post('/destroy', [App\Http\Controllers\HomeController::class, 'destroy'])->name('destroy');
+Route::post('/delete{id}', [App\Http\Controllers\HomeController::class, 'delete'])->name('delete');
 

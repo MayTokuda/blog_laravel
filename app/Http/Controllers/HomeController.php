@@ -25,7 +25,23 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    public function search($tag_name){
+        // クエリビルダ
+        $articles = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
+            ->join('tags' , 'tag_id', '=', 'tags.id')
+            // 'tags.name'= $tag_name
+            ->where('tags.name', $tag_name)
+            ->get();
+            // dd($articles);
 
+            $tags = DB::table('tags')
+            ->select('name')
+            ->selectRaw('COUNT(name) as count_name')
+            ->groupBy('name')
+            ->get();
+        
+        return view('dashbord', ['articles' => $articles , 'tags' => $tags]);
+    }
     /**
      * Show the application dashboard.
      *
@@ -34,14 +50,16 @@ class HomeController extends Controller
     // ブログ一覧表示画面--->画面あり
     public function index()
     {
+        $users=User::all();
+
         $articles = Article::latest()->get();
         // $articles = Article::all();
 
         $tags = DB::table('tags')
-                    ->select('name')
-                    ->selectRaw('COUNT(name) as count_name')
-                    ->groupBy('name')
-                    ->get();
+            ->select('name')
+            ->selectRaw('COUNT(name) as count_name')
+            ->groupBy('name')
+            ->get();
 
         return view('dashbord', ['articles' => $articles , 'tags' => $tags]);
     }
@@ -53,10 +71,13 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     // ブログ新規入力フォーム--->画面あり
-    public function create()
+    public function create(Request $request)
     {
+        $users=User::all();
+
         $article = new Article();
         $data_article = ['article' => $article];
+        $article->user_id = $request->user()->id;
 
         $tag = new Tag();
         $data_tag = ['tag' => $tag];
@@ -81,10 +102,12 @@ class HomeController extends Controller
             'body' => 'required'
         ]);
 
+
+
         // 新規記事をarticlesテーブルに入れる処理
         $article = new Article();
         $article->user_id = $request->user()->id;
-        $article->image = $request->image;
+        $article->image = $request->file('image')->store('public'); //アップロードした画像ふぁいるをstorageに保存
         $article->title = $request->title;
         $article->body = $request->body;
         $article->save();
@@ -201,13 +224,16 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     // 削除処理(showの削除ボタン)--->画面なし
-    public function destroy($id)
-    {
+   // public function delete($id)
+    //{
+       // $article = Article::find($id);
 
-	if (empty($article)) {
-            \Session::flash('err_msg', 'データがありません');
-            return redirect(route('dashbord'));
-        }
+        //if (is_null($article)) {
+          //  \Session::flash('err_msg', 'データがありません');
+            //return redirect(route('dashbord'));
+        //}
+
+        
 
 	//try {
 	   // ブログを削除
@@ -217,8 +243,12 @@ class HomeController extends Controller
         //abort(500);		
 		//}
 
-       
-        \Session::flash('err_msg', '削除しました。');
-        return view('destroy', ['article' => $article]);
+    
+    public function delete($id){
+        $article = Article::findOrFail($id);
+        $article->delete();
+        return redirect('/dashbord');
     }
+
 }
+
