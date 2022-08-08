@@ -21,7 +21,7 @@
                         </p>
                     @endif
 
-                    ユーザーのブログ記事一覧<br>
+                    <?php $user = Auth::user(); ?>{{ $user->name}}さんのブログ<br>
 
                     <a href="{{ route('post_create') }}"><button type="button" class="btn btn-secondary">新規ブログ作成</button></a></td>
                     <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">ブログ一覧(全て)</button></a></td>

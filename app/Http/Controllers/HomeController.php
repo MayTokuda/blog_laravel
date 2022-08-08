@@ -50,6 +50,8 @@ class HomeController extends Controller
     // ブログ一覧表示画面--->画面あり
     public function index()
     {
+        $users=User::all();
+
         $articles = Article::latest()->get();
         // $articles = Article::all();
 
@@ -71,9 +73,12 @@ class HomeController extends Controller
     // ブログ新規入力フォーム--->画面あり
     public function create(Request $request)
     {
+        $users=User::all();
+
         $article = new Article();
         $data_article = ['article' => $article];
         $article->user_id = $request->user()->id;
+
         $tag = new Tag();
         $data_tag = ['tag' => $tag];
 
