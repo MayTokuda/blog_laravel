@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('create(新規記事投稿)') }}
+                    <?php $user = Auth::user(); ?>{{ $user->name}}さんの新規投稿記事
                     <main class="container">
                         <form action="{{ route('post_store') }}" method="post" enctype="multipart/form-data">
                             @csrf 
