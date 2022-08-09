@@ -246,7 +246,10 @@ class HomeController extends Controller
     
     public function delete($id){
         $article = Article::findOrFail($id);
-        $article->delete();
+
+        $article->Delete();
+        $article->tags()->detach();
+
         return redirect('/dashbord');
     }
 

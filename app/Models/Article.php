@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\ArticleTag;
+
 class Article extends Model
 {
     
@@ -28,6 +30,14 @@ class Article extends Model
         return $this -> belongsToMany('App\Models\Tag');
     }   
 
+    public static function boot(){
+        parent::boot();
+
+        static::deleting(function ($article){
+
+            $article->tags()->delete();
+        });
+    }
 
     // Articleモデル(親)
     // 

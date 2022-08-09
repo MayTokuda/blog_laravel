@@ -24,9 +24,9 @@
                             <p>作成日：{{ substr($article->created_at,0,11) }} &ensp;&ensp; 更新日：{{ substr($article->updated_at,0,11) }}</p>
                             <a href="/edit/{{ $article->id }}"><button type="button" class="btn btn-secondary">編集</button></a></td>                                                           
                             <td>
-                            <form action="{{ route('delete', ['id' => $article->id ] ) }}" method="POST">
+                            <form action="{{ route('delete', ['id' => $article->id ] ) }}"  method="POST"  id="delete_{{ $article->id }}">
                             @csrf 
-                            <button type="submit" class="btn btn-secondary">削除</button>
+                            <a href="#" class="btn btn-secondary" data-id="{{ $article->id }}" onclick="deletePost(this);" >削除</button>
                             </form>
                             </td>
 
@@ -39,4 +39,14 @@
         </div>
     </div>
 </div>
+
+<script>
+function deletePost(e) {
+    'use strict';
+    if (confirm('本当にこの記事を削除してもいいですか？')){
+    document.getElementById('delete_' + e.dataset.id).submit();
+    }
+}
+</script>
+
 @endsection
