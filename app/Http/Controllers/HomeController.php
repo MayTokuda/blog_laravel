@@ -25,6 +25,13 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    // プロフィール
+    public function profile(){
+
+        return view('profile');
+    }
+
+    // ブログ記事絞り込み
     public function search($tag_name){
         // クエリビルダ
         $articles = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')

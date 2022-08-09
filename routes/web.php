@@ -20,9 +20,19 @@ Route::get('/', function () {
 Auth::routes();
 
 // 徳田ルーティング
+//プロフィール画面を表示
+Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+
+//プロフィール登録画面の表示
+//プロフィール登録機能
+
+//プロフィール編集画面の表示
+//プロフィール編集機能
+
 // 記事一覧画面の表示
 Route::get('/dashbord', [App\Http\Controllers\HomeController::class, 'index'])->name('dashbord');
 
+// 記事絞り込み機能(足立)
 Route::get('/search/{tag_id}', [App\Http\Controllers\HomeController::class, 'search']);
 
 // 記事詳細画面の表示
@@ -30,15 +40,21 @@ Route::get('/show/{id}', [App\Http\Controllers\HomeController::class, 'show']);
 
 
 // 足立ルーティング
+//ブログ新規登録画面の表示
 Route::get('/post_create', [App\Http\Controllers\HomeController::class, 'create'])->name('post_create');
+
+//ブログ新規登録機能
 Route::post('/post_insert', [App\Http\Controllers\HomeController::class, 'store'])->name('post_store');
+
 
 // 倉田ルーティング
 //編集画面の表示
 Route::get('/edit/{id}', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
+
 //編集登録機能
 // Route::post('/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 Route::post('/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
+
 
 // 松野ルーティング
 Route::post('/delete/{id}', [App\Http\Controllers\HomeController::class, 'delete'])->name('delete');
