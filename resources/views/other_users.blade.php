@@ -15,7 +15,7 @@
                     @endif
 
                     <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">ブログ一覧(全て)</button></a></td><br>
-                    プロフィール画面です
+                    メンバーの一覧画面です！
                 </div>
             </div>
         </div>
