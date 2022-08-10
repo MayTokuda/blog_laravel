@@ -214,9 +214,10 @@ class HomeController extends Controller
         // dd($request);
     
         // 更新タグの名前をtagsテーブルに入れる処理
-        // $tag = Tag::find();
-        // $tag->name = $request->tag;
-        // $tag->save();
+        $tag = Tag::find($id);
+        $tag->name = $request->tag;
+        // dd($request);
+        $tag->save();
 
         // dd($request);
 
