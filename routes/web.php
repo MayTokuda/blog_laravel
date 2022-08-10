@@ -29,6 +29,9 @@ Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])-
 //プロフィール編集画面の表示
 //プロフィール編集機能
 
+// 登録したユーザーの名前
+Route::get('/other_users', [App\Http\Controllers\HomeController::class, 'index_member'])->name('other_users');
+
 // 記事一覧画面の表示
 Route::get('/dashbord', [App\Http\Controllers\HomeController::class, 'index'])->name('dashbord');
 

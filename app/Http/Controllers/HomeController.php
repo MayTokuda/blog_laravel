@@ -31,6 +31,12 @@ class HomeController extends Controller
         return view('profile');
     }
 
+    // メンバーの一覧
+    public function index_member(){
+
+        return view('other_users');
+    }
+
     // ブログ記事絞り込み
     public function search($tag_name){
         // クエリビルダ
