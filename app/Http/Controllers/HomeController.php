@@ -45,7 +45,6 @@ class HomeController extends Controller
             // 'tags.name'= $tag_name
             ->where('tags.name', $tag_name)
             ->get();
-            // dd($articles);
 
             $tags = DB::table('tags')
             ->select('name')
@@ -63,16 +62,19 @@ class HomeController extends Controller
     // ブログ一覧表示画面--->画面あり
     public function index()
     {
-        $users=User::all();
+        $users=auth()->user();
 
-        $articles = Article::latest()->get();
+        $articles = Article::where('user_id' , \Auth::user()->id)
+                    ->latest()
+                    ->get();
+        // $articles = Article::latest()->get();
         // $articles = Article::all();
 
         $tags = DB::table('tags')
-            ->select('name')
-            ->selectRaw('COUNT(name) as count_name')
-            ->groupBy('name')
-            ->get();
+                ->select('name')
+                ->selectRaw('COUNT(name) as count_name')
+                ->groupBy('name')
+                ->get();
 
         return view('dashbord', ['articles' => $articles , 'tags' => $tags]);
     }
@@ -86,7 +88,7 @@ class HomeController extends Controller
     // ブログ新規入力フォーム--->画面あり
     public function create(Request $request)
     {
-        $users=User::all();
+        $users=auth()->user();
 
         $article = new Article();
         $data_article = ['article' => $article];
