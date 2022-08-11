@@ -120,7 +120,7 @@ class HomeController extends Controller
         // 新規記事をarticlesテーブルに入れる処理
         $article = new Article();
         $article->user_id = $request->user()->id;
-        $article->image = $request->file('image')->store('public'); //アップロードした画像ふぁいるをstorageに保存
+        $article->image = $request->file('image')->store('public'); //アップロードした画像ファイルをstorageに保存
         $article->title = $request->title;
         $article->body = $request->body;
         $article->save();
