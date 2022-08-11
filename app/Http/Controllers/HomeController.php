@@ -203,8 +203,12 @@ class HomeController extends Controller
         $article = Article::find($id);
         
         // if文で三つ処理を追加
+        // if ($request->image != null) {
+        //     $article->image = $request->image;
+        // }
+        $article->user_id = $request->user()->id;
         if ($request->image != null) {
-            $article->image = $request->image;
+            $article->image = $request->file('image')->store('public');
         }
         $article->title = $request->title;
         $article->body = $request->body;
@@ -216,7 +220,6 @@ class HomeController extends Controller
         // 更新タグの名前をtagsテーブルに入れる処理
         $tag = Tag::find($id);
         $tag->name = $request->tag;
-        // dd($request);
         $tag->save();
 
         // dd($request);
@@ -224,7 +227,7 @@ class HomeController extends Controller
         // 投稿ににタグ付するために、attachメソッドをつかい
         // モデルを結びつけている中間テーブルにレコードを挿入する
         // 中間テーブルではarticle_idとtag_idを結びつける処理を行う
-        // $article->tags()->attach($tag->id);
+        $article->user_id = $request->user()->id;
 
         return redirect(route('dashbord'));
     }

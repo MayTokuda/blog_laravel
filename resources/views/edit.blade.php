@@ -16,7 +16,7 @@
 
                     {{ __('編集') }}
                     <main class="container">
-                    <form action="{{ route('update', ['id' => $article->id ] ) }}" method="POST">
+                    <form action="{{ route('update', ['id' => $article->id ] ) }}" method="POST" enctype="multipart/form-data">
                         @csrf 
                         <dl class="form-list">
                             <dt>画像</dt>
