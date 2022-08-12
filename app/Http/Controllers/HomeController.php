@@ -46,12 +46,15 @@ class HomeController extends Controller
             ->where('tags.name', $tag_name)
             ->get();
 
-            $tags = DB::table('tags')
+
+        $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
+            ->join('tags' , 'tag_id', '=', 'tags.id')
+            ->where('user_id', \Auth::id())
             ->select('name')
             ->selectRaw('COUNT(name) as count_name')
             ->groupBy('name')
             ->get();
-        
+
         return view('dashbord', ['articles' => $articles , 'tags' => $tags]);
     }
     /**
@@ -70,11 +73,20 @@ class HomeController extends Controller
         // $articles = Article::latest()->get();
         // $articles = Article::all();
 
-        $tags = DB::table('tags')
-                ->select('name')
-                ->selectRaw('COUNT(name) as count_name')
-                ->groupBy('name')
-                ->get();
+
+        $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
+            ->join('tags' , 'tag_id', '=', 'tags.id')
+            ->where('user_id', \Auth::id())
+            ->select('name')
+            ->selectRaw('COUNT(name) as count_name')
+            ->groupBy('name')
+            ->get();
+        
+        // $tags = DB::table('tags')
+        //         ->select('name')
+        //         ->selectRaw('COUNT(name) as count_name')
+        //         ->groupBy('name')
+        //         ->get();
 
         return view('dashbord', ['articles' => $articles , 'tags' => $tags]);
     }

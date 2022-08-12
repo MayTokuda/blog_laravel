@@ -43,7 +43,7 @@ class Article extends Model
     // 
     // articlesテーブル(親)とcommentsテーブル(子)のリレーション
     
-    public function comments(){
-        return $this -> hasMany('App\Models\Comment');
-    }
+    // public function comments(){
+    //     return $this -> hasMany('App\Models\Comment');
+    // }
 }
