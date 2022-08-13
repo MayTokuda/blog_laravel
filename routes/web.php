@@ -55,8 +55,10 @@ Route::post('/post_insert', [App\Http\Controllers\HomeController::class, 'store'
 Route::get('/edit/{id}', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
 
 //編集登録機能
-// Route::post('/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 Route::post('/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
+
+// プロフィール編集画面の表示
+Route::get('/profileedit/{id}', [App\Http\Controllers\HomeController::class, 'profoleedit'])->name('profileedit');
 
 
 // 松野ルーティング
