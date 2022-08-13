@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('User一覧') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -16,6 +16,23 @@
 
                     <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">ブログ一覧(全て)</button></a></td><br>
                     メンバーの一覧画面です！
+
+                    <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
+                        <thead>
+                            <tr>
+                                <th>ユーザー番号</th>
+                                <th>ユーザー名</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($_users as $user)
+                            <tr>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
