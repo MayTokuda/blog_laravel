@@ -21,10 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('profile_image')->default('/storage/no_image.jpg');
-            $table->string('area');
-            $table->string('hobby');
-            $table->string('introduction');
         });
     }
 
