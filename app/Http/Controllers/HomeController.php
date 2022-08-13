@@ -284,5 +284,12 @@ class HomeController extends Controller
         return redirect('/dashbord');
     }
 
+    public function users(){
+        $_users =  DB::select('select * from users'); 
+        $data = ['users' => $_users];
+
+        return view('other_users', $data);
+    }
+
 }
 
