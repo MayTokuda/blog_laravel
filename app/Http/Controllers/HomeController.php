@@ -42,6 +42,7 @@ class HomeController extends Controller
         // クエリビルダ
         $articles = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
             ->join('tags' , 'tag_id', '=', 'tags.id')
+            ->where('user_id', \Auth::id())
             // 'tags.name'= $tag_name
             ->where('tags.name', $tag_name)
             ->get();
@@ -55,7 +56,11 @@ class HomeController extends Controller
             ->groupBy('name')
             ->get();
 
-        return view('dashbord', ['articles' => $articles , 'tags' => $tags]);
+        $days = Article::groupBy('date')
+            ->orderBy('date', 'DESC')
+            ->get(array(DB::raw('Date(created_at) as date')));
+
+        return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days]);
     }
     /**
      * Show the application dashboard.
@@ -81,14 +86,12 @@ class HomeController extends Controller
             ->selectRaw('COUNT(name) as count_name')
             ->groupBy('name')
             ->get();
-        
-        // $tags = DB::table('tags')
-        //         ->select('name')
-        //         ->selectRaw('COUNT(name) as count_name')
-        //         ->groupBy('name')
-        //         ->get();
+            
+        $days = Article::groupBy('date')
+            ->orderBy('date', 'DESC')
+            ->get(array(DB::raw('Date(created_at) as date')));
 
-        return view('dashbord', ['articles' => $articles , 'tags' => $tags]);
+        return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days ]);
     }
 
 
