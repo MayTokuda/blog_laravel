@@ -33,8 +33,9 @@ class HomeController extends Controller
 
     // メンバーの一覧
     public function index_member(){
-
-        return view('other_users');
+        $allusers = DB::table('users')->select('name')->get();
+        // dd($allusers);
+        return view('other_users', compact('allusers'));
     }
 
     // ブログ記事絞り込み
@@ -296,12 +297,6 @@ class HomeController extends Controller
         return redirect('/dashbord');
     }
 
-    public function users(){
-        $_users =  DB::select('select * from users'); 
-        $data = ['users' => $_users];
-
-        return view('other_users', $data);
-    }
-
+   
 }
 
