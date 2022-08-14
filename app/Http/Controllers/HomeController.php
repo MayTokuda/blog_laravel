@@ -217,9 +217,6 @@ class HomeController extends Controller
         $article = Article::find($id);
         
         // if文で三つ処理を追加
-        // if ($request->image != null) {
-        //     $article->image = $request->image;
-        // }
         $article->user_id = $request->user()->id;
         if ($request->image != null) {
             $article->image = $request->file('image')->store('public');
@@ -244,6 +241,18 @@ class HomeController extends Controller
         $article->user_id = $request->user()->id;
 
         return redirect(route('dashbord'));
+    }
+
+        //プロフィール編集フォームを表示する
+    public function profileedit($id){
+
+        $users = User::find($id);
+
+        if (is_null($users)) {
+            \Session::flash('err_msg', 'データがありません。');
+            return redirect(route('show'));
+        }
+        return view('profileedit',['user' => $users]);
     }
 
 
