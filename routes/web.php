@@ -56,12 +56,13 @@ Route::post('/post_insert', [App\Http\Controllers\HomeController::class, 'store'
 // 倉田ルーティング
 //編集画面の表示
 Route::get('/edit/{id}', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
-
-//編集登録機能
+//編集機能
 Route::post('/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 
 // プロフィール編集画面の表示
-Route::get('/profileedit/{id}', [App\Http\Controllers\HomeController::class, 'profoleedit'])->name('profileedit');
+Route::get('/profileedit/{id}', [App\Http\Controllers\HomeController::class, 'profileedit'])->name('profileedit');
+// プロフィール編集機能
+Route::post('/profileupdate/{id}', [App\Http\Controllers\HomeController::class, 'profileupdate'])->name('profileupdate');
 
 
 // 松野ルーティング
