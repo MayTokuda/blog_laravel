@@ -32,8 +32,6 @@ Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])-
 // 登録したユーザーの名前
 Route::get('/other_users', [App\Http\Controllers\HomeController::class, 'index_member'])->name('other_users');
 
-// 登録したユーザー情報をの表示
-Route::get('/users', [App\Http\Controllers\HomeController::class, 'users'])->name('users');
 
 // 記事一覧画面の表示
 Route::get('/dashbord', [App\Http\Controllers\HomeController::class, 'index'])->name('dashbord');

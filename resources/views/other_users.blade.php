@@ -20,14 +20,12 @@
                     <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
-                                <th>ユーザー番号</th>
                                 <th>ユーザー名</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($_users as $user)
+                            @foreach($allusers as $user)
                             <tr>
-                                <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                             </tr>
                             @endforeach
