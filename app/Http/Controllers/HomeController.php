@@ -128,7 +128,7 @@ class HomeController extends Controller
     {
         $this->validate($request, [
             'image' => 'required',
-            'title' => 'required|max:255',
+            'title' => 'required|max:50',
             'tag' => 'required',
             'body' => 'required'
         ]);
