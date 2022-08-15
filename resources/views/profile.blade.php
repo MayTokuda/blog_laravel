@@ -21,10 +21,10 @@
                         </p>
                     @endif
 
-                    <?php $user = Auth::user(); ?>{{ $user->name}}さんのプロフィール<br>
+                    {{ $user->name}}さんのプロフィール<br>
 
                     <!-- プロフィール画像 -->
-                    <img class="user-img" src="{{ \Storage::url($user->profile_img) }}" width="75vw"><br>
+                    <img class="user-img" src="{{ asset('storage/' .$user->profile_image) }}" width="75vw"><br>
 
                     <div class="row">
                         <label class="col-sm-2 control-label" for="username">ニックネーム</label>
