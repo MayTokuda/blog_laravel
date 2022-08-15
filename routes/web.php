@@ -60,7 +60,8 @@ Route::get('/edit/{id}', [App\Http\Controllers\HomeController::class, 'edit'])->
 Route::post('/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 
 // プロフィール編集画面の表示
-Route::get('/profileedit/{id}', [App\Http\Controllers\HomeController::class, 'profileedit'])->name('profileedit');
+Route::get('/profileedit/{id}', [App\Http\Controllers\HomeController::class, 'profileedit'])->name('profileedit_get');
+Route::post('/profileedit/{id}', [App\Http\Controllers\HomeController::class, 'profileedit'])->name('profileedit');
 // プロフィール編集機能
 Route::post('/profileupdate/{id}', [App\Http\Controllers\HomeController::class, 'profileupdate'])->name('profileupdate');
 

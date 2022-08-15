@@ -208,7 +208,7 @@ class HomeController extends Controller
     public function update(Request $request, $id)
     {
 
-    //必須項目にする処理
+        //必須項目にする処理
         $this->validate($request, [
         //     'image' => 'required',
             'title' => 'required|max:255',
@@ -220,7 +220,6 @@ class HomeController extends Controller
         $article = Article::find($id);
         
         // if文で三つ処理を追加
-        $article->user_id = $request->user()->id;
         if ($request->image != null) {
             $article->image = $request->file('image')->store('public');
         }
@@ -258,7 +257,35 @@ class HomeController extends Controller
         return view('profileedit',['user' => $users]);
     }
 
+        // プロフィール更新機能
+    public function profileupdate(Request $request, $id){
 
+        // 必須項目にする処理
+        $this->validate($request, [
+            // 'image' => 'required',
+            'name' => 'required|max:15',
+            'area' => 'required',
+            'hobby' => 'required',
+            'introduction' => 'required'
+        ]);
+    
+        // 更新記事をarticlesテーブルに入れる処理（更新）
+        $users = User::find($id);
+        
+        // if文で三つ処理を追加
+        if ($request->profile_image != null) {
+            $users->profile_image = $request->file('profile_image')->store('public');
+        }
+        $users->name = $request->name;
+        $users->area = $request->area;
+        $users->hobby = $request->hobby;
+        $users->introduction = $request->introduction;
+
+        $users->save();
+
+        // dd($request);
+        return redirect(route('profile'));
+    }
 
     /**
      * Remove the specified resource from storage.
