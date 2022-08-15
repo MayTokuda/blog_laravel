@@ -54,7 +54,7 @@
                         </div>
                     </div>
 
-                    <a href="/profileedit/{id}"><button type="button" class="btn btn-secondary">プロフィール編集</button></a>
+                    <a href="/profileedit/{{$user->id}}"><button type="button" class="btn btn-secondary">プロフィール編集</button></a>
                     <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">TOPに戻る</button></a>
 
                 </div>

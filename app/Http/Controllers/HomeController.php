@@ -254,7 +254,7 @@ class HomeController extends Controller
 
         if (is_null($users)) {
             \Session::flash('err_msg', 'データがありません。');
-            return redirect(route('show'));
+            return redirect(route('profile'));
         }
         return view('profileedit',['user' => $users]);
     }
