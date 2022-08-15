@@ -27,8 +27,8 @@ class HomeController extends Controller
 
     // プロフィール
     public function profile(){
-
-        return view('profile');
+        $user = \Auth::user();
+        return view('profile',['user' => $user]);
     }
 
     // メンバーの一覧
@@ -274,13 +274,14 @@ class HomeController extends Controller
         
         // if文で三つ処理を追加
         if ($request->profile_image != null) {
-            $users->profile_image = $request->file('profile_image')->store('public');
+            // dd($request->file('profile_image')->store('public'));
+            $users->profile_image =basename( $request->file('profile_image')->store('public'));
         }
         $users->name = $request->name;
         $users->area = $request->area;
         $users->hobby = $request->hobby;
         $users->introduction = $request->introduction;
-
+        // dd($users);
         $users->save();
 
         // dd($request);
