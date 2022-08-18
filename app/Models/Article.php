@@ -27,7 +27,10 @@ class Article extends Model
     // 多対多のリレーション
     
     public function tags(){
-        return $this -> belongsToMany('App\Models\Tag');
+        // return $this -> hasMany('App\Models\Tag::class');
+        // return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class);
+        // return $this -> belongsToMany(Tag::class, 'article_tag' , 'article_id' , 'tag_id');
     }   
 
     public static function boot(){

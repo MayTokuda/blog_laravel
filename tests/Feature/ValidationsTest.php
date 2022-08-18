@@ -37,6 +37,7 @@ class ValidationsTest extends TestCase
         // Validator::make('値の配列', '検証ルールの配列');
         $validator = Validator::make($dataList, $rules);
 
+        // true/falseが返る
         $result    = $validator->passes();
 
         // $expect(true or false) = $result
@@ -58,8 +59,8 @@ class ValidationsTest extends TestCase
             'expect'   => ['title', 'タイトル名', true],
             'required' => ['title', null, false],
             'required' => ['title', '', false],
-            'max'      => ['title', str_repeat('a', 51), false],
-            'max'      => ['title', str_repeat('a', 50), true],
+            'max'      => ['title', str_repeat('a', 21), false],
+            'max'      => ['title', str_repeat('a', 20), true],
         ];
     }
 }
