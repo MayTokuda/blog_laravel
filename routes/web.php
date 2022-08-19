@@ -32,6 +32,9 @@ Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])-
 // 登録したユーザーの名前
 Route::get('/other_users', [App\Http\Controllers\HomeController::class, 'index_member'])->name('other_users');
 
+// 登録したユーザーのブログ一覧表示
+Route::get('/dashbord2/{user_id}', [App\Http\Controllers\HomeController::class, 'user'])->name('dashbord2');
+
 
 // 記事一覧画面の表示
 Route::get('/dashbord', [App\Http\Controllers\HomeController::class, 'index'])->name('dashbord');
@@ -58,7 +61,8 @@ Route::get('/edit/{id}', [App\Http\Controllers\HomeController::class, 'edit'])->
 Route::post('/update/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
 
 // プロフィール編集画面の表示
-Route::get('/profileedit/{id}', [App\Http\Controllers\HomeController::class, 'profileedit'])->name('profileedit');
+Route::get('/profileedit/{id}', [App\Http\Controllers\HomeController::class, 'profileedit'])->name('profileedit_get');
+Route::post('/profileedit/{id}', [App\Http\Controllers\HomeController::class, 'profileedit'])->name('profileedit');
 // プロフィール編集機能
 Route::post('/profileupdate/{id}', [App\Http\Controllers\HomeController::class, 'profileupdate'])->name('profileupdate');
 

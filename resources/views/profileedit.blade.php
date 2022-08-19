@@ -13,16 +13,19 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                    @endforeach
 
                     {{ __('プロフィール編集') }}
                     <main class="container">
-                    <form action="{{ route('profileedit', ['id' => $user->id ] ) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('profileupdate', ['id' => $user->id ] ) }}" method="POST" enctype="multipart/form-data">
                         @csrf 
                         <dl class="form-list">
                             <dt>画像</dt>
-                            <dd><input type="file" name="image" value="{{$user->image}}" accept="image/png,image/jpeg"></dd>
+                            <dd><input type="file" name="profile_image" value="{{$user->profile_image}}" accept="image/png,image/jpeg"></dd>
                             <dt>ニックネーム</dt>
-                            <dd><input type="text" name="username" value="{{$user->name}}"></dd>
+                            <dd><input type="text" name="name" value="{{$user->name}}"></dd>
                             <dt>エリア</dt>
                             <dd><input type="text" name="area" value="{{$user->area}}"></dd>
                             <dt>趣味</dt>

@@ -8,8 +8,11 @@ use App\Models\Comment;
 use App\Models\Tag;
 use App\Models\User;
 
+
 // 使用するリクエストクラス
 use App\Http\Requests\BlogRequest;
+
+
 
 // 使用するDB
 use Illuminate\Support\Facades\DB;
@@ -30,12 +33,13 @@ class HomeController extends Controller
 
     // プロフィール
     public function profile(){
-
-        return view('profile');
+        $user = \Auth::user();
+        return view('profile',['user' => $user]);
     }
 
     // メンバーの一覧
     public function index_member(){
+
         
         $allusers = User::where('id','!=',\Auth::user()->id)->select('name')->get();
         // dd($allusers);
@@ -45,6 +49,7 @@ class HomeController extends Controller
         // dd($items);
 
         return view('other_users', compact('allusers','items'));
+
     }
 
     // ブログ記事絞り込み
@@ -209,7 +214,7 @@ class HomeController extends Controller
     public function update(Request $request, $id)
     {
 
-    //必須項目にする処理
+        //必須項目にする処理
         $this->validate($request, [
         //     'image' => 'required',
             'title' => 'required|max:255',
@@ -221,7 +226,6 @@ class HomeController extends Controller
         $article = Article::find($id);
         
         // if文で三つ処理を追加
-        $article->user_id = $request->user()->id;
         if ($request->image != null) {
             $article->image = $request->file('image')->store('public');
         }
@@ -259,7 +263,36 @@ class HomeController extends Controller
         return view('profileedit',['user' => $users]);
     }
 
+        // プロフィール更新機能
+    public function profileupdate(Request $request, $id){
 
+        // 必須項目にする処理
+        $this->validate($request, [
+            // 'image' => 'required',
+            'name' => 'required|max:15',
+            'area' => 'required',
+            'hobby' => 'required',
+            'introduction' => 'required'
+        ]);
+    
+        // 更新記事をarticlesテーブルに入れる処理（更新）
+        $users = User::find($id);
+        
+        // if文で三つ処理を追加
+        if ($request->profile_image != null) {
+            // dd($request->file('profile_image')->store('public'));
+            $users->profile_image =basename( $request->file('profile_image')->store('public'));
+        }
+        $users->name = $request->name;
+        $users->area = $request->area;
+        $users->hobby = $request->hobby;
+        $users->introduction = $request->introduction;
+        // dd($users);
+        $users->save();
+
+        // dd($request);
+        return redirect(route('profile'));
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -297,6 +330,35 @@ class HomeController extends Controller
         return redirect('/dashbord');
     }
 
-   
+    public function user($userId)
+    {
+        // dd($userId);
+        $users=auth()->user();
+
+        $articles = Article::where('user_id' , $userId)
+                    ->latest()
+                    ->get();
+                    // dd($articles);
+        // $articles = Article::latest()->get();
+        // $articles = Article::all();
+
+        $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
+            ->join('tags' , 'tag_id', '=', 'tags.id')
+            ->where('user_id', $userId )
+            ->select('name')
+            ->selectRaw('COUNT(name) as count_name')
+            ->groupBy('name')
+            ->get();
+            
+        $days = Article::groupBy('date')
+            ->orderBy('date', 'DESC')
+            ->get(array(DB::raw('Date(created_at) as date')));
+
+        return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days ]);
+    }
+  
+
+
+    
 }
 
