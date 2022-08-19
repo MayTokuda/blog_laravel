@@ -327,20 +327,21 @@ class HomeController extends Controller
         return redirect('/dashbord');
     }
 
-    public function user()
+    public function user($userId)
     {
+        // dd($userId);
         $users=auth()->user();
 
-        $articles = Article::where('user_id' , \Auth::user()->id)
+        $articles = Article::where('user_id' , $userId)
                     ->latest()
                     ->get();
+                    // dd($articles);
         // $articles = Article::latest()->get();
         // $articles = Article::all();
 
-
         $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
             ->join('tags' , 'tag_id', '=', 'tags.id')
-            ->where('user_id', \Auth::id())
+            ->where('user_id', $userId )
             ->select('name')
             ->selectRaw('COUNT(name) as count_name')
             ->groupBy('name')
@@ -350,7 +351,7 @@ class HomeController extends Controller
             ->orderBy('date', 'DESC')
             ->get(array(DB::raw('Date(created_at) as date')));
 
-        return view('dashbord2', ['articles' => $articles , 'tags' => $tags , 'days'=>$days ]);
+        return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days ]);
     }
   
 

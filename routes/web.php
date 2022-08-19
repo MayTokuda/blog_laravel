@@ -33,7 +33,7 @@ Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])-
 Route::get('/other_users', [App\Http\Controllers\HomeController::class, 'index_member'])->name('other_users');
 
 // 登録したユーザーのブログ一覧表示
-Route::get('/dashbord2', [App\Http\Controllers\HomeController::class, 'user'])->name('dashbord2');
+Route::get('/dashbord2/{user_id}', [App\Http\Controllers\HomeController::class, 'user'])->name('dashbord2');
 
 
 // 記事一覧画面の表示
