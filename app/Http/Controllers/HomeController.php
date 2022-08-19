@@ -9,6 +9,11 @@ use App\Models\Tag;
 use App\Models\User;
 
 
+// 使用するリクエストクラス
+use App\Http\Requests\BlogRequest;
+
+
+
 // 使用するDB
 use Illuminate\Support\Facades\DB;
 
@@ -34,10 +39,17 @@ class HomeController extends Controller
 
     // メンバーの一覧
     public function index_member(){
-        $allusers = DB::table('users')->get();
+
+        
+        $allusers = User::where('id','!=',\Auth::user()->id)->select('name')->get();
         // dd($allusers);
-     
-        return view('other_users', compact('allusers'));
+
+        // Eloquentで紐づいているものを取り出す(消さないでください)
+        // $items = Article::where('user_id','!=',\Auth::user()->id)->with('user:id,name')->get();
+        // dd($items);
+
+        return view('other_users', compact('allusers','items'));
+
     }
 
     // ブログ記事絞り込み
@@ -126,20 +138,11 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     // 追加処理(createの登録ボタン)--->画面なし
-    public function store(Request $request)
+    public function store(BlogRequest $request)
     {
-        $this->validate($request, [
-            'image' => 'required',
-            'title' => 'required|max:50',
-            'tag' => 'required',
-            'body' => 'required'
-        ]);
-
-
-
         // 新規記事をarticlesテーブルに入れる処理
         $article = new Article();
-        $article->user_id = $request->user()->id;
+        $article->user_id = \Auth::id();
         $article->image = $request->file('image')->store('public'); //アップロードした画像ファイルをstorageに保存
         $article->title = $request->title;
         $article->body = $request->body;

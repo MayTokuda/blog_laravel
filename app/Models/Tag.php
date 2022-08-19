@@ -15,6 +15,6 @@ class Tag extends Model
     // 多対多のリレーション
     
     public function articles(){
-        return $this -> belongsToMany('App\Models\Article');
+        return $this -> belongsToMany(Article::class , 'article_tag' , 'tag_id' , 'article_id');
     }  
 }

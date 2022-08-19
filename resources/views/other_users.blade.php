@@ -31,6 +31,35 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
+                        <thead>
+                            <tr>
+                                <th>ユーザー名</th>
+                                <th>記事タイトル</th>
+                                <th>写真</th>
+                                <th>記事本文</th>
+                                <th>日付</th>
+                                <th>タグ</th>
+                            </tr>
+                        </thead>
+
+                        {{-- 消さないでください --}}
+                        {{-- <tbody>
+                            @foreach($items as $item)
+                                <tr>
+                                    <td>{{ $item->user->name }}</td>
+                                    <td>{{ $item->title }}</td>
+                                    <td><img class="article-img" src="{{ \Storage::url($item->image) }}" width="75vw"></td>
+                                    <td>{{ $item->body }}</td>
+                                    <td>{{ $item->created_at->format('Y-m-d') }}</td>
+                                        @foreach($item->tags as $tag)
+                                            <td>{{ $tag->name }}</td>
+                                        @endforeach
+                                </tr>
+                            @endforeach
+                        </tbody>    --}}
+                    </table>
                 </div>
             </div>
         </div>
