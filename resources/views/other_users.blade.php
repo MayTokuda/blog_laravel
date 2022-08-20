@@ -44,8 +44,7 @@
                             </tr>
                         </thead>
 
-                        {{-- 消さないでください --}}
-                        {{-- <tbody>
+                        <tbody>
                             @foreach($items as $item)
                                 <tr>
                                     <td>{{ $item->user->name }}</td>
@@ -58,7 +57,7 @@
                                         @endforeach
                                 </tr>
                             @endforeach
-                        </tbody>    --}}
+                        </tbody>   
                     </table>
                 </div>
             </div>
