@@ -56,7 +56,7 @@
                     @if(Auth::user()->id === $user->id)
                     <a href="/profileedit/{{$user->id}}"><button type="button" class="btn btn-secondary">プロフィール編集</button></a>
                     @endif
-                    <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">TOPに戻る</button></a>
+                    <button type="button" class="btn btn-secondary" onClick="history.back()">戻る</button>
 
                 </div>
             </div>
