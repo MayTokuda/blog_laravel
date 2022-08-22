@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">ブログ一覧(全て)</button></a></td><br>
+                    <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">自分のブログ一覧(全て)</button></a></td><br>
+
                     メンバーの一覧画面です！
 
                     <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
@@ -26,7 +27,7 @@
                         <tbody>
                             @foreach($allusers as $user)
                             <tr>
-                                <td><a href="profile/{{$user->id}}"> {{ $user->name }}</a></td>
+                                <td><a href="/profile/{{$user->id}}"> {{ $user->name }}</a></td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -53,7 +53,8 @@ class HomeController extends Controller
         // dd($allusers);
 
         // Eloquentで紐づいているものを取り出す
-        $items = Article::where('user_id','!=',\Auth::user()->id)->with('user:id,name')->get();
+        $items = Article::with('user:id,name')->get();
+        // $items = Article::where('user_id','!=',\Auth::user()->id)->with('user:id,name')->get();
         // dd($items);
 
         $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
@@ -400,8 +401,8 @@ class HomeController extends Controller
     // }
 
 
-        return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days ]);
-    }
+        // return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days ]);
+    // }
 
 
 
