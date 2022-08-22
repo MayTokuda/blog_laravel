@@ -26,7 +26,7 @@
                         <tbody>
                             @foreach($allusers as $user)
                             <tr>
-                                <td><a href="dashbord2/{{$user->id}}"> {{ $user->name }}</a></td>
+                                <td><a href="profile/{{$user->id}}"> {{ $user->name }}</a></td>
                             </tr>
                             @endforeach
                         </tbody>

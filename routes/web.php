@@ -22,6 +22,8 @@ Auth::routes();
 // 徳田ルーティング
 //プロフィール画面を表示
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+//他のユーザのプロフィールを表示
+Route::get('/profile/{user}', [App\Http\Controllers\HomeController::class, 'profileshow']);
 
 //プロフィール登録画面の表示
 //プロフィール登録機能

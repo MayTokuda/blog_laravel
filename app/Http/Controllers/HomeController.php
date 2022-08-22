@@ -36,12 +36,20 @@ class HomeController extends Controller
         $user = \Auth::user();
         return view('profile',['user' => $user]);
     }
+       // プロフィール
+    public function profileshow($id){
+        // $user = \Auth::user();
+        $user = User::find($id);
+        $items = ['user' => $user,];
+        return view('profile', $items);
+    }
+
 
     // メンバーの一覧
     public function index_member(){
 
         
-        $allusers = User::where('id','!=',\Auth::user()->id)->select('name')->get();
+        $allusers = User::where('id','!=',\Auth::user()->id)->select('id','name')->get();
         // dd($allusers);
 
         // Eloquentで紐づいているものを取り出す
@@ -331,35 +339,39 @@ class HomeController extends Controller
         return redirect('/dashbord');
     }
 
-    public function user($userId)
-    {
-        // dd($userId);
-        $users=auth()->user();
+    // public function user($userId)
+    // {
+    //     // dd($userId);
+    //     $users=auth()->user();
 
-        $articles = Article::where('user_id' , $userId)
-                    ->latest()
-                    ->get();
-                    // dd($articles);
-        // $articles = Article::latest()->get();
-        // $articles = Article::all();
-
-        $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
-            ->join('tags' , 'tag_id', '=', 'tags.id')
-            ->where('user_id', $userId )
-            ->select('name')
-            ->selectRaw('COUNT(name) as count_name')
-            ->groupBy('name')
-            ->get();
+    //     $articles = Article::where('user_id' , $userId)
+    //                 ->latest()
+    //                 ->get();
+    //                 // dd($articles);
+    //     // $articles = Article::latest()->get();
+    //     // $articles = Article::all();
+    
+    //     $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
+    //         ->join('tags' , 'tag_id', '=', 'tags.id')
+    //         ->where('user_id', $userId )
+    //         ->select('name')
+    //         ->selectRaw('COUNT(name) as count_name')
+    //         ->groupBy('name')
+    //         ->get();
             
-        $days = Article::groupBy('date')
-            ->orderBy('date', 'DESC')
-            ->get(array(DB::raw('Date(created_at) as date')));
+    //     $days = Article::groupBy('date')
+    //         ->orderBy('date', 'DESC')
+    //         ->get(array(DB::raw('Date(created_at) as date')));
+
+    //     return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days ]);
+    // }
+
 
         return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days ]);
     }
 
 
 
-    
+
 }
 
