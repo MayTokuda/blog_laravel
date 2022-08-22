@@ -44,7 +44,7 @@ class HomeController extends Controller
         $allusers = User::where('id','!=',\Auth::user()->id)->select('name')->get();
         // dd($allusers);
 
-        // Eloquentで紐づいているものを取り出す(消さないでください)
+        // Eloquentで紐づいているものを取り出す
         $items = Article::where('user_id','!=',\Auth::user()->id)->with('user:id,name')->get();
         // dd($items);
 
@@ -52,7 +52,7 @@ class HomeController extends Controller
         // return view('other_users', compact('allusers'));
     }
 
-    // ブログ記事絞り込み
+    // ブログ記事絞り込み(タグの名前)
     public function search($tag_name){
         // クエリビルダ
         $articles = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
@@ -74,6 +74,7 @@ class HomeController extends Controller
         $days = Article::groupBy('date')
             ->orderBy('date', 'DESC')
             ->get(array(DB::raw('Date(created_at) as date')));
+        // dd($days);
 
         return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days]);
     }
@@ -356,7 +357,7 @@ class HomeController extends Controller
 
         return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days ]);
     }
-  
+
 
 
     

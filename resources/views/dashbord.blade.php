@@ -73,7 +73,7 @@
                         <tbody>
                             @foreach($days as $day)
                             <tr>
-                                <td>{{ $day->date}}</a></td>
+                                <td><a href="/search/{{ $day->date }}">{{ $day->date }}</a></td>
                             </tr>
                             @endforeach
                         </tbody>
