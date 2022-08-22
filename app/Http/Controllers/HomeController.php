@@ -56,8 +56,15 @@ class HomeController extends Controller
         $items = Article::where('user_id','!=',\Auth::user()->id)->with('user:id,name')->get();
         // dd($items);
 
-        return view('other_users', compact('allusers','items'));
-        // return view('other_users', compact('allusers'));
+        $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
+        ->join('tags' , 'tag_id', '=', 'tags.id')
+        ->where('user_id', '!=',\Auth::user()->id)
+        ->select('name')
+        ->selectRaw('COUNT(name) as count_name')
+        ->groupBy('name')
+        ->get();
+
+        return view('other_users', compact('allusers','items','tags'));
     }
 
     // ブログ記事絞り込み
@@ -85,6 +92,32 @@ class HomeController extends Controller
 
         return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days]);
     }
+        // ブログ記事絞り込み
+    public function allsearch($tag_name){
+        // クエリビルダ
+        $articles = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
+            ->join('tags' , 'tag_id', '=', 'tags.id')
+            ->where('user_id', '!=',\Auth::user()->id)
+            // 'tags.name'= $tag_name
+            ->where('tags.name', $tag_name)
+            ->get();
+
+
+        $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
+            ->join('tags' , 'tag_id', '=', 'tags.id')
+            ->where('user_id', '!=',\Auth::user()->id)
+            ->select('name')
+            ->selectRaw('COUNT(name) as count_name')
+            ->groupBy('name')
+            ->get();
+
+        $days = Article::groupBy('date')
+            ->orderBy('date', 'DESC')
+            ->get(array(DB::raw('Date(created_at) as date')));
+
+        return view('dashbord2', ['articles' => $articles , 'tags' => $tags , 'days'=>$days]);
+    }
+
     /**
      * Show the application dashboard.
      *

@@ -21,7 +21,8 @@
                         </p>
                     @endif
 
-					<?php $user = Auth::user(); ?>{{ $user->name}}さんのブログ<br>
+					<?php $user = Auth::user(); ?>{{ $user->name}}さん→他ユーザーのブログ<br>
+                    
 
                     <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
                         <thead>
@@ -55,7 +56,7 @@
                         <tbody>
                             @foreach($tags as $tag)
                             <tr>
-                                <td><a href="/search/{{ $tag->name }}">{{ $tag->name }}({{ $tag->count_name }})</a></td>
+                                <td><a href="/allsearch/{{ $tag->name }}">{{ $tag->name }}({{ $tag->count_name }})</a></td>
                             </tr>
                             @endforeach
                         </tbody>

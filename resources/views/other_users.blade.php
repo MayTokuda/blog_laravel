@@ -35,6 +35,23 @@
                     <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
+                                <th>タグの種類</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        <tbody>
+                            @foreach($tags as $tag)
+                                <tr>
+                                    <td><a href="/allsearch/{{ $tag->name }}">{{ $tag->name }}({{ $tag->count_name }})</a></td>
+                                </tr>
+                            @endforeach
+                        </tbody>   
+                    </table>    
+
+                    <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
+                        <thead>
+                            <tr>
                                 <th>ユーザー名</th>
                                 <th>記事タイトル</th>
                                 <th>写真</th>
