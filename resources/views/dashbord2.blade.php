@@ -55,7 +55,7 @@
                         <tbody>
                             @foreach($tags as $tag)
                             <tr>
-                                <td><a href="/search/{{ $tag->name }}">{{ $tag->name }}({{ $tag->count_name }})</a></td>
+                            <td><a href="/allsearch/{{ $tag->name }}">{{ $tag->name }}({{ $tag->count_name }})</a></td>
                             </tr>
                             @endforeach
                         </tbody>
