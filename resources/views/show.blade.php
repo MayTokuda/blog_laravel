@@ -26,17 +26,18 @@
                             {{-- ログインしたユーザーのみ表示 --}}
                             @if (Auth::id() === $article->user_id)
 
-                            <a href="/edit/{{ $article->id }}"><button type="button" class="btn btn-secondary">編集</button></a></td>                                                           
-                            <td>
+                            <a href="/edit/{{ $article->id }}"><button type="button" class="btn btn-secondary">編集</button></a>                                                          
+                            
                             <form action="{{ route('delete', ['id' => $article->id ] ) }}"  method="POST"  id="delete_{{ $article->id }}">
                             @csrf 
                             <a href="#" class="btn btn-secondary" data-id="{{ $article->id }}" onclick="deletePost(this);" >削除</button>
                             </form>
-                            </td>
+                            
                             
                             @endif
 
-                            <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">ブログの一覧に戻る</button></a></td>
+                            <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">自分のブログの一覧に戻る</button></a></td>
+                            <a href="{{ route('other_users') }}"><button type="button" class="btn btn-secondary">メンバーのブログ一覧に戻る</button></a></td>
                         </div>
                     </div>
 

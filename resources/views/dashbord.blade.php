@@ -26,7 +26,7 @@
                     <a href="{{ route('post_create') }}"><button type="button" class="btn btn-secondary">新規ブログ作成</button></a></td>
                     <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">ブログ一覧(全て)</button></a></td>
                     <a href="{{ route('profile') }}"><button type="button" class="btn btn-secondary">プロフィール</button></a></td>
-                    <a href="{{ route('other_users') }}"><button type="button" class="btn btn-secondary">メンバーの一覧</button></a></td>
+                    <a href="{{ route('other_users') }}"><button type="button" class="btn btn-secondary">メンバーのブログ一覧</button></a></td>
 
                     <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
                         <thead>
