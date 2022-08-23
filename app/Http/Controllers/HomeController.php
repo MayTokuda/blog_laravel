@@ -68,6 +68,11 @@ class HomeController extends Controller
         return view('other_users', compact('allusers','items','tags'));
     }
 
+
+
+
+
+    
     // ブログ記事絞り込み(タグの名前)
     public function search($tag_name){
         // クエリビルダ
@@ -87,13 +92,27 @@ class HomeController extends Controller
             ->groupBy('name')
             ->get();
 
+        return view('dashbord', ['articles' => $articles , 'tags' => $tags ]);
+    }
+
+    // ブログの絞り込み(time)
+    public function search_time($time){
+        $article_times = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
+            ->join('tags' , 'tag_id', '=', 'tags.id')
+            ->where('user_id', \Auth::id())
+            ->where('articles.created_at', $time)
+            ->get();
+        dd($article_times);
+        // 年月日分秒->年月日にしないといけない
+
         $days = Article::groupBy('date')
             ->orderBy('date', 'DESC')
             ->get(array(DB::raw('Date(created_at) as date')));
         // dd($days);
 
-        return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days]);
+        return view('dashbord', ['article_times' => $article_times , 'days'=>$days]);
     }
+
         // ブログ記事絞り込み
     public function allsearch($tag_name){
         // クエリビルダ
@@ -119,6 +138,7 @@ class HomeController extends Controller
 
         return view('dashbord2', ['articles' => $articles , 'tags' => $tags , 'days'=>$days]);
     }
+
 
     /**
      * Show the application dashboard.

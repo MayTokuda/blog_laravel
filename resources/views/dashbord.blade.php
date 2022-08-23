@@ -46,7 +46,7 @@
                                 <td><a href="/show/{{ $article->id }}">{{ $article->title }}</a></td>
                                 <td><img class="article-img" src="{{ \Storage::url($article->image) }}" width="75vw"></td>
                                 <td>{{ $article->body }}</td>
-                                <td>{{ $article->updated_at->format('Y-m-d')}}</td>
+                                <td>{{ $article->created_at->format('Y-m-d')}}</td>
                                 <td>{{ $article->tags()->value('name') }}</td>
                             </tr>
                             @endforeach
@@ -73,7 +73,7 @@
                         <tbody>
                             @foreach($days as $day)
                             <tr>
-                                <td><a href="/search/{{ $day->date }}">{{ $day->date }}</a></td>
+                                <td><a href="/search_time/{{ $day->date }}">{{ $day->date }}</a></td>
                             </tr>
                             @endforeach
                         </tbody>
