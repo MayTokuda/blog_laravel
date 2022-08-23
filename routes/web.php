@@ -42,7 +42,10 @@ Route::get('/dashbord2/{user_id}', [App\Http\Controllers\HomeController::class, 
 Route::get('/dashbord', [App\Http\Controllers\HomeController::class, 'index'])->name('dashbord');
 
 // 記事絞り込み機能(足立)
-Route::get('/search/{tag_name}', [App\Http\Controllers\HomeController::class, 'search']);
+Route::get('/search/{tag_id}', [App\Http\Controllers\HomeController::class, 'search']);
+// 他ユーザー記事絞り込み機能
+Route::get('/allsearch/{tag_id}', [App\Http\Controllers\HomeController::class, 'allsearch']);
+
 
 // 記事絞り込み機能(足立)
 Route::get('/search_time/{time}', [App\Http\Controllers\HomeController::class, 'search_time']);
