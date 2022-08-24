@@ -71,11 +71,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach($days as $day)
+                            @foreach($days as $day)
                             <tr>
                                 <td><a href="/search_time/{{ $day->date }}">{{ $day->date }}</a></td>
                             </tr>
-                            @endforeach --}}
+                            @endforeach 
                         </tbody>
                     </table>
                 </div>
