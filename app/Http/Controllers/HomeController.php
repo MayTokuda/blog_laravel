@@ -59,7 +59,7 @@ class HomeController extends Controller
 
         $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
         ->join('tags' , 'tag_id', '=', 'tags.id')
-        ->where('user_id', '!=',\Auth::user()->id)
+        // ->where('user_id', '!=',\Auth::user()->id)
         ->select('name')
         ->selectRaw('COUNT(name) as count_name')
         ->groupBy('name')
@@ -67,11 +67,6 @@ class HomeController extends Controller
 
         return view('other_users', compact('allusers','items','tags'));
     }
-
-
-
-
-
     
     // ブログ記事絞り込み(タグの名前)
     public function search($tag_name){
@@ -127,12 +122,12 @@ class HomeController extends Controller
         return view('dashbord', ['articles' => $article_times , 'days'=>$days , 'tags' => $tags]);
     }
 
-        // ブログ記事絞り込み
+        // すべてのユーザーのブログ記事絞り込み
     public function allsearch($tag_name){
         // クエリビルダ
         $articles = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
             ->join('tags' , 'tag_id', '=', 'tags.id')
-            ->where('user_id', '!=',\Auth::user()->id)
+            // ->where('user_id', '!=',\Auth::user()->id)
             // 'tags.name'= $tag_name
             ->where('tags.name', $tag_name)
             ->get();
@@ -140,17 +135,13 @@ class HomeController extends Controller
 
         $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
             ->join('tags' , 'tag_id', '=', 'tags.id')
-            ->where('user_id', '!=',\Auth::user()->id)
+            // ->where('user_id', '!=',\Auth::user()->id)
             ->select('name')
             ->selectRaw('COUNT(name) as count_name')
             ->groupBy('name')
             ->get();
 
-        $days = Article::groupBy('date')
-            ->orderBy('date', 'DESC')
-            ->get(array(DB::raw('Date(created_at) as date')));
-
-        return view('dashbord2', ['articles' => $articles , 'tags' => $tags , 'days'=>$days]);
+        return view('dashbord_tag', ['articles' => $articles , 'tags' => $tags ]);
     }
 
 

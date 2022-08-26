@@ -21,13 +21,15 @@
                         </p>
                     @endif
 
-					<?php $user = Auth::user(); ?>{{ $user->name}}さん→他ユーザーのブログ<br>
+					{{-- <?php $user = Auth::user(); ?>{{ $user->name}}さん→他ユーザーのブログ<br> --}}
                     
+                    <a href="{{ route('other_users') }}"><button type="button" class="btn btn-secondary">メンバーのブログ一覧</button></a></td>
 
                     <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
                                 {{-- <th>記事番号</th> --}}
+                                <th>ユーザー名</th>
                                 <th>記事タイトル</th>
                                 <th>写真</th>
                                 <th>記事本文</th>
@@ -39,6 +41,7 @@
                             @foreach($articles as $article)
                             <tr>
 							{{-- <td>{{ $article->id }}</td> --}}
+                                <td>{{ $article->user->name }}</td>
                                 <td><a href="/show/{{ $article->id }}">{{ $article->title }}</a></td>
                                 <td><img class="article-img" src="{{ \Storage::url($article->image) }}" width="75vw"></td>
                                 <td>{{ $article->body }}</td>
@@ -61,7 +64,7 @@
                             @endforeach
                         </tbody>
 
-                        <thead>
+                        {{-- <thead>
                             <tr>
                                 <th>日付</th>
                             </tr>
@@ -72,7 +75,7 @@
                                 <td>{{ $day->date}}</a></td>
                             </tr>
                             @endforeach
-                        </tbody>
+                        </tbody> --}}
                     </table>
                 </div>
             </div>
