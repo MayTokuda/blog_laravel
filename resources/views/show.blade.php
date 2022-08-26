@@ -38,6 +38,7 @@
 
                             <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">自分のブログの一覧に戻る</button></a></td>
                             <a href="{{ route('other_users') }}"><button type="button" class="btn btn-secondary">メンバーのブログ一覧に戻る</button></a></td>
+                            <button type="button" class="btn btn-secondary" onClick="history.back()">一つ前の画面に戻る</button>
                         </div>
                     </div>
 
