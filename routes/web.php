@@ -24,6 +24,8 @@ Auth::routes();
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 //他のユーザのプロフィールを表示
 Route::get('/profile/{user}', [App\Http\Controllers\HomeController::class, 'profileshow']);
+//他のユーザのブログを表示
+Route::get('/dashbord_other/{user}', [App\Http\Controllers\HomeController::class, 'index_other']);
 
 //プロフィール登録画面の表示
 //プロフィール登録機能
@@ -43,6 +45,7 @@ Route::get('/dashbord', [App\Http\Controllers\HomeController::class, 'index'])->
 
 // 記事絞り込み機能(足立)
 Route::get('/search/{tag_id}', [App\Http\Controllers\HomeController::class, 'search']);
+Route::get('/wordsearch', [App\Http\Controllers\HomeController::class, 'search']);
 // 他ユーザー記事絞り込み機能
 Route::get('/allsearch/{tag_id}', [App\Http\Controllers\HomeController::class, 'allsearch']);
 

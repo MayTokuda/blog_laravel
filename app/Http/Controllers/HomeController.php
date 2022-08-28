@@ -65,7 +65,11 @@ class HomeController extends Controller
         ->groupBy('name')
         ->get();
 
-        return view('other_users', compact('allusers','items','tags'));
+        $days = Article::groupBy('date')
+        ->orderBy('date', 'DESC')
+        ->get(array(DB::raw('Date(created_at) as date')));
+
+        return view('other_users', compact('allusers','items','tags','days'));
     }
     
     // ブログ記事絞り込み(タグの名前)
@@ -91,8 +95,9 @@ class HomeController extends Controller
             ->orderBy('date', 'DESC')
             ->get(array(DB::raw('Date(created_at) as date')));
         // dd($days);
+        $allusers = User::where('id','!=',\Auth::user()->id)->select('id','name')->get();  
 
-        return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days' => $days ]);
+        return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days' => $days , 'allusers'=>$allusers ]);
     }
 
     // ブログの絞り込み(time)
@@ -118,8 +123,10 @@ class HomeController extends Controller
             ->selectRaw('COUNT(name) as count_name')
             ->groupBy('name')
             ->get();
-
-        return view('dashbord', ['articles' => $article_times , 'days'=>$days , 'tags' => $tags]);
+            
+        $allusers = User::where('id','!=',\Auth::user()->id)->select('id','name')->get();  
+        
+        return view('dashbord', ['articles' => $article_times , 'days'=>$days , 'tags' => $tags, 'allusers'=>$allusers]);
     }
 
         // すべてのユーザーのブログ記事絞り込み
@@ -174,7 +181,45 @@ class HomeController extends Controller
             ->orderBy('date', 'DESC')
             ->get(array(DB::raw('Date(created_at) as date')));
 
-        return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days ]);
+        $allusers = User::where('id','!=',\Auth::user()->id)->select('id','name')->get();
+
+        return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days , 'allusers'=>$allusers ]);
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    // ブログ一覧表示画面--->画面あり
+    public function index_other($id)
+    {
+
+        $user = User::find($id);
+        $allusers = User::where('id','!=',\Auth::user()->id)->select('id','name')->get();
+ 
+
+        $articles = Article::where('user_id' , $id)
+                    ->latest()
+                    ->get();
+        // $articles = Article::latest()->get();
+        // $articles = Article::all();
+
+
+        $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
+            ->join('tags' , 'tag_id', '=', 'tags.id')
+            ->where('user_id')
+            ->select('name')
+            ->selectRaw('COUNT(name) as count_name')
+            ->groupBy('name')
+            ->get();
+            
+        $days = Article::groupBy('date')
+            ->orderBy('date', 'DESC')
+            ->get(array(DB::raw('Date(created_at) as date')));
+
+        return view('dashbord_other',  ['articles' => $articles , 'tags' => $tags , 'days'=>$days , 'user'=>$user , 'allusers'=>$allusers ] );
+
     }
 
 
