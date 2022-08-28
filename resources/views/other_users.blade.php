@@ -18,7 +18,7 @@
 
                     メンバーの一覧画面です！
 
-                    <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
+                    <!-- <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
                                 <th>ユーザー名</th>
@@ -28,6 +28,21 @@
                             @foreach($allusers as $user)
                             <tr>
                                 <td><a href="/profile/{{$user->id}}"> {{ $user->name }}</a></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table> -->
+
+                    <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
+                        <thead>
+                            <tr>
+                                <th>ユーザー名</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($allusers as $user)
+                            <tr>
+                                <td><a href="/dashbord_other/{{$user->id}}"> {{ $user->name }}</a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -47,8 +62,20 @@
                                     <td><a href="/allsearch/{{ $tag->name }}">{{ $tag->name }}({{ $tag->count_name }})</a></td>
                                 </tr>
                             @endforeach
-                        </tbody>   
-                    </table>    
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th>日付</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($days as $day)
+                            <tr>
+                                <td><a href="/search_time/{{ $day->date }}">{{ $day->date }}</a></td>
+                            </tr>
+                            @endforeach 
+                        </tbody>  
+                    </table>  
 
                     <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
                         <thead>
@@ -66,7 +93,7 @@
                             @foreach($items as $item)
                                 <tr>
                                     <td>{{ $item->user->name }}</td>
-                                    <td><a href="/show/{{ $item->id }}">{{ $item->title }}</td>
+                                    <td>{{ $item->title }}</td>
                                     <td><img class="article-img" src="{{ \Storage::url($item->image) }}" width="75vw"></td>
                                     <td>{{ $item->body }}</td>
                                     <td>{{ $item->created_at->format('Y-m-d') }}</td>
