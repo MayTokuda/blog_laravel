@@ -88,6 +88,7 @@ class HomeController extends Controller
             ->get();
 
             $days = Article::groupBy('date')
+            ->where('user_id', \Auth::id())
             ->orderBy('date', 'DESC')
             ->get(array(DB::raw('Date(created_at) as date')));
         // dd($days);
@@ -107,6 +108,7 @@ class HomeController extends Controller
         // 年月日分秒->年月日にしないといけない
 
         $days = Article::groupBy('date')
+            ->where('user_id', \Auth::id())
             ->orderBy('date', 'DESC')
             ->get(array(DB::raw('Date(created_at) as date')));
         // dd($days);
@@ -171,6 +173,7 @@ class HomeController extends Controller
             ->get();
             
         $days = Article::groupBy('date')
+            ->where('user_id', \Auth::id())
             ->orderBy('date', 'DESC')
             ->get(array(DB::raw('Date(created_at) as date')));
 
