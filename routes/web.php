@@ -56,6 +56,8 @@ Route::get('/allsearch/{tag_id}', [App\Http\Controllers\HomeController::class, '
 // 記事絞り込み機能(足立)
 Route::get('/search_time/{time}', [App\Http\Controllers\HomeController::class, 'search_time']);
 
+Route::get('/allsearch_time/{time}', [App\Http\Controllers\HomeController::class, 'allsearch_time']);
+
 // 記事詳細画面の表示
 Route::get('/show/{id}', [App\Http\Controllers\HomeController::class, 'show']);
 

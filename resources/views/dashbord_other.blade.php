@@ -59,7 +59,7 @@
                         <tbody>
                             @foreach($tags as $tag)
                             <tr>
-                                <td><a href="/search/{{ $tag->name }}">{{ $tag->name }}({{ $tag->count_name }})</a></td>
+                                <td><a href="/allsearch/{{ $tag->name }}">{{ $tag->name }}({{ $tag->count_name }})</a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -72,7 +72,7 @@
                         <tbody>
                             @foreach($days as $day)
                             <tr>
-                                <td><a href="/search_time/{{ $day->date }}">{{ $day->date }}</a></td>
+                                <td><a href="/allsearch_time/{{ $day->date }}">{{ $day->date }}</a></td>
                             </tr>
                             @endforeach 
                         </tbody>

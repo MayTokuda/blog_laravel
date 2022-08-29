@@ -152,6 +152,35 @@ class HomeController extends Controller
 
         return view('dashbord_tag', ['articles' => $articles , 'tags' => $tags ]);
     }
+        // すべてのブログの絞り込み(time)
+        public function allsearch_time($time){
+            $article_times = Article::select('articles.*')->leftJoin('article_tag', 'article_tag.article_id', '=', 'articles.id')
+                ->leftJoin('tags' , 'tag_id', '=', 'tags.id')
+                // ->where('user_id')
+                ->whereBetween('articles.created_at', [$time . ' 00:00:00', $time . ' 23:59:59'])
+                // ->where('articles.created_at', $time)
+                ->get();
+             //dd($article_times);
+            // 年月日分秒->年月日にしないといけない
+    
+            $days = Article::groupBy('date')
+                ->where('user_id')
+                ->orderBy('date', 'DESC')
+                ->get(array(DB::raw('Date(created_at) as date')));
+            // dd($days);
+    
+            $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
+                ->join('tags' , 'tag_id', '=', 'tags.id')
+                ->where('user_id')
+                ->select('name')
+                ->selectRaw('COUNT(name) as count_name')
+                ->groupBy('name')
+                ->get();
+                
+            $allusers = User::where('id')->select('id','name')->get();  
+            
+            return view('dashbord', ['articles' => $article_times , 'days'=>$days , 'tags' => $tags, 'allusers'=>$allusers]);
+        }
 
 
     /**
