@@ -32,21 +32,6 @@ class ArticleFactory extends Factory
             // 記事のタイトル-20文字
             'title' => $this->faker->sentence(20),
 
-            // 記事のタグ-15文字---articleテーブル=>article_tagテーブル=>tagテーブル
-            // 'tag_name' => function() {return Tag::factory()->create()->name;},
-
-            // 'tag_name' => Article::factory()
-            //                 ->has(ArticleTag::factory()->state())->create();
-
-            // 参考コード
-            // $user = User::factory()->has(
-            //     Post::factory(3)
-            //         ->state(
-            //         function(array $attributes, User $user) {
-            //             return ['user_type' => $user->type];
-            //         })
-            // )->create();
-
             // 記事の本文-25文字
             'body' => $this->faker->sentence(25),
         ];

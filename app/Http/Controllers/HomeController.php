@@ -256,6 +256,7 @@ class HomeController extends Controller
     // 追加処理(createの登録ボタン)--->画面なし
     public function store(BlogRequest $request)
     {
+        var_dump($request->all());
         // 新規記事をarticlesテーブルに入れる処理
         $article = new Article();
         $article->user_id = \Auth::id();
