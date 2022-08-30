@@ -28,6 +28,8 @@ class CRUDfunctionTest extends TestCase
      *
      * @return void
      */
+
+
     public function test_ログインしていれば投稿出来る() {
 
     // ユーザーをログイン状態にして、投稿ページに遷移させる
@@ -77,4 +79,43 @@ class CRUDfunctionTest extends TestCase
     // 先ほど投稿したitemのtitleと一致するものが表示されているか
     $response->assertSeeText($article_data['title']);
     }
+
+
+    public function test_ログインしているかつ、自分の投稿であれば編集出来る(){
+    
+    // ユーザーをログイン状態にする
+    $response = $this->actingAs($this->user);
+    // メゾットで作成したarticleの編集ページにアクセスし、ステータステストを行う
+    $response = $this->get(route('edit', $this->article->id));
+    $response->assertStatus(200);
+
+    //(1)編集する値を定義する
+    $file = UploadedFile::fake()->image('avatar.jpg');
+    $article_data = [
+        'title' => 'タイトル(編集成功)',
+        'tag' => 'タグ(編集成功)',
+        'body' => '本文(編集成功)',
+        'image' => $file
+    ];
+
+    //(2)updateアクションを動かすためのルートを設定、定義する
+    $update_url = route('update', $this->article->id);
+
+    // putメソッドで(1),(2)の情報を持ってupdate処理に飛ばしています。
+    $response = $this->put($update_url, $article_data);
+
+    // エラーメッセージがないこと
+    $response->assertSessionHasNoErrors(); 
+
+    // リダイレクト
+    $response->assertStatus(302); 
+
+    // リダイレクトした時のurlリンク
+    $response->assertRedirect('/dashbord',$this->article->id); 
+
+    // 編集したレコードが存在するか
+    $this->assertDatabaseHas('articles', ['title' => 'タイトル(編集成功)']);
+    } 
+
+
 }
