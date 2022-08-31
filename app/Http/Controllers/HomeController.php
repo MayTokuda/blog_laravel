@@ -69,7 +69,7 @@ class HomeController extends Controller
         ->orderBy('date', 'DESC')
         ->get(array(DB::raw('Date(created_at) as date')));
 
-        return view('other_users', compact('allusers','items','tags','days'));
+        return view('dashbord_other_user', compact('allusers','items','tags','days'));
     }
     
     // ブログ記事絞り込み(タグの名前)
@@ -150,7 +150,7 @@ class HomeController extends Controller
             ->groupBy('name')
             ->get();
 
-        return view('dashbord_tag', ['articles' => $articles , 'tags' => $tags ]);
+        return view('dashbord_other_tag', ['articles' => $articles , 'tags' => $tags ]);
     }
         // すべてのブログの絞り込み(time)
         public function allsearch_time($time){
@@ -164,22 +164,12 @@ class HomeController extends Controller
             // 年月日分秒->年月日にしないといけない
     
             $days = Article::groupBy('date')
-                ->where('user_id')
+                // ->where('user_id')
                 ->orderBy('date', 'DESC')
                 ->get(array(DB::raw('Date(created_at) as date')));
             // dd($days);
-    
-            $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
-                ->join('tags' , 'tag_id', '=', 'tags.id')
-                ->where('user_id')
-                ->select('name')
-                ->selectRaw('COUNT(name) as count_name')
-                ->groupBy('name')
-                ->get();
-                
-            $allusers = User::where('id')->select('id','name')->get();  
             
-            return view('dashbord', ['articles' => $article_times , 'days'=>$days , 'tags' => $tags, 'allusers'=>$allusers]);
+            return view('dashbord_other_time', ['articles' => $article_times , 'days'=>$days ]);
         }
 
 
@@ -229,7 +219,7 @@ class HomeController extends Controller
 
         $user = User::find($id);
         $allusers = User::where('id','!=',\Auth::user()->id)->select('id','name')->get();
- 
+
 
         $articles = Article::where('user_id' , $id)
                     ->latest()

@@ -33,7 +33,7 @@
                         </tbody>
                     </table> -->
 
-                    <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
+                    {{-- <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
                                 <th>ユーザー名</th>
@@ -46,7 +46,7 @@
                             </tr>
                             @endforeach
                         </tbody>
-                    </table>
+                    </table> --}}
 
                     <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
                         <thead>
@@ -63,6 +63,9 @@
                                 </tr>
                             @endforeach
                         </tbody>
+                    </table> 
+
+                    <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
                                 <th>日付</th>
@@ -92,8 +95,8 @@
                         <tbody>
                             @foreach($items as $item)
                                 <tr>
-                                    <td>{{ $item->user->name }}</td>
-                                    <td>{{ $item->title }}</td>
+                                    <td><a href="/profile/{{$item->user->id}}">{{ $item->user->name }}</td>
+                                    <td><a href="/show/{{ $item->id }}">{{ $item->title }}</td>
                                     <td><img class="article-img" src="{{ \Storage::url($item->image) }}" width="75vw"></td>
                                     <td>{{ $item->body }}</td>
                                     <td>{{ $item->created_at->format('Y-m-d') }}</td>
