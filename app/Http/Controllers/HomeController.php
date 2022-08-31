@@ -340,12 +340,24 @@ class HomeController extends Controller
     public function edit($id)
     {
         $article = Article::find($id);
+
+        // データが入ってないとエラーがっでる処理
         if (is_null($article)) {
             \Session::flash('err_msg', 'データがありません');
             return redirect(route('show'));
         }
 
-        return view('edit', ['article' => $article]);
+        // 投稿者以外が編集できなくする処理
+        if (auth()->user()->id != $article->user_id) {
+            return redirect(route('show'))->with('error', '許可されていない操作です');
+        }
+        
+        //tag表示の処理
+        $tag_str='';
+        foreach($article->tags as $tag){
+            $tag_str.=$tag->name . ' ';
+        }
+        return view('edit', ['article' => $article,'tag_str'=>$tag_str]);
     }
 
 

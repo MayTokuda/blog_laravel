@@ -26,7 +26,7 @@
                             <dt>タイトル</dt>
                             <dd><input type="text" name="title" value="{{$article->title}}"></dd>
                             <dt>タグ</dt>
-                            <dd><input type="text" name="tag" value="{{$article->tag}}"></dd>
+                            <dd><input type="text" name="tag" value="{{$tag_str}}"></dd>
                             <dt>本文</dt>
                             <dd><textarea name="body" value="{{$article->body}}">{{$article->body}}</textarea></dd>
                         </dl>
