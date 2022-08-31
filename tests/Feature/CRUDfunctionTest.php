@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\Tag;
 use App\Models\Article;
 use Illuminate\Http\UploadedFile;
 
@@ -21,6 +22,8 @@ class CRUDfunctionTest extends TestCase
     $this->another_user = User::factory()->create();
     // テストユーザーの記事作成
     $this->article = Article::factory()->create(['user_id' => $this->user->id]);
+    $tag = Tag::factory()->create(['name' => 'some-tag']);
+    $this->article->tags()->attach($tag->id);
     }
 
     /**
@@ -102,7 +105,7 @@ class CRUDfunctionTest extends TestCase
     $update_url = route('update', $this->article->id);
 
     // putメソッドで(1),(2)の情報を持ってupdate処理に飛ばしています。
-    $response = $this->put($update_url, $article_data);
+    $response = $this->post($update_url, $article_data);
 
     // エラーメッセージがないこと
     $response->assertSessionHasNoErrors(); 
