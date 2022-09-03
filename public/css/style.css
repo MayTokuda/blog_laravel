@@ -1,0 +1,14 @@
+img{
+    max-width: 100%;
+}
+.fv{
+    background-size: cover;
+    position: absolute;  /* 文字重ねる*/
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    z-index: -1; /* 最背面にする */
+}
+.color-red{
+    color: red;
+}

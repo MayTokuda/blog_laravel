@@ -168,6 +168,7 @@ return [
         'tag' => 'タグ',
         'title' => 'タイトル',
         'password' => 'パスワード',
+        'introduction' => '自己紹介文',
     ],
     
 
