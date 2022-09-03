@@ -313,10 +313,8 @@ class HomeController extends Controller
             \Session::flash('err_msg', 'データがありません');
             return redirect(route('show'));
         }
-        // return view('show', ['article' => $article]);
-        return view('show')->with([
-            'article' => $article,
-        ]);
+
+        return view('show')->with(['article' => $article,]);
     }
 
 
@@ -448,69 +446,15 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // 削除処理(showの削除ボタン)--->画面なし
-   // public function delete($id)
-    //{
-       // $article = Article::find($id);
-
-        //if (is_null($article)) {
-          //  \Session::flash('err_msg', 'データがありません');
-            //return redirect(route('dashbord'));
-        //}
-
-        
-
-	//try {
-	   // ブログを削除
-
-        // $article = Article::destroy($id);
-        //} catch(\Throwable $e ){
-        //abort(500);		
-		//}
-
-    
     public function delete($id){
         $article = Article::findOrFail($id);
+        // Article::where('id', $id)->delete();
 
         $article->Delete();
         $article->tags()->detach();
 
         return redirect('/dashbord');
     }
-
-    // public function user($userId)
-    // {
-    //     // dd($userId);
-    //     $users=auth()->user();
-
-    //     $articles = Article::where('user_id' , $userId)
-    //                 ->latest()
-    //                 ->get();
-    //                 // dd($articles);
-    //     // $articles = Article::latest()->get();
-    //     // $articles = Article::all();
-    
-    //     $tags = Article::join('article_tag', 'article_tag.article_id', '=', 'articles.id')
-    //         ->join('tags' , 'tag_id', '=', 'tags.id')
-    //         ->where('user_id', $userId )
-    //         ->select('name')
-    //         ->selectRaw('COUNT(name) as count_name')
-    //         ->groupBy('name')
-    //         ->get();
-            
-    //     $days = Article::groupBy('date')
-    //         ->orderBy('date', 'DESC')
-    //         ->get(array(DB::raw('Date(created_at) as date')));
-
-    //     return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days ]);
-    // }
-
-
-        // return view('dashbord', ['articles' => $articles , 'tags' => $tags , 'days'=>$days ]);
-    // }
-
-
-
 
 }
 
