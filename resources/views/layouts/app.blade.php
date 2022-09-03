@@ -15,30 +15,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <style>
-        body {
-            background-color: #dee2d1;
-        }
-        a {
-            text-decoration: none;
-            color: gray;
-        }
-        .btn {
-            background-color: #6abe83;
-        }
-        .btn:hover {
-            background-color: #1f640a;
-        }
-        .btn-link {
-            color: white;
-            text-decoration: none;
-        }
-        .card-header {
-            background-color: #6abe83;
-            color: white;
-        }
-    </style>
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">

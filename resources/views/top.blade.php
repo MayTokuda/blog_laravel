@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="fv">
-  <img src="/img/" alt="">
+  <img src="\css\img\top_image.jpg" alt="">
 </div>
 <div class="loginPage">
   <div class="container">
