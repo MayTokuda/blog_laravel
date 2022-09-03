@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success " role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
@@ -20,34 +20,42 @@
                             @csrf 
                             <dl class="form-list">
                                 <dt>画像</dt>
-                                {{-- 画像のエラーメッセージ --}}
-                                @if ($errors->has('image'))
-                                    {{$errors->first('image')}}
-                                @endif
+                                <div class="color-red">
+                                    {{-- 画像のエラーメッセージ --}}
+                                    @if ($errors->has('image'))
+                                        {{$errors->first('image')}}
+                                    @endif
+                                </div>
                                 {{-- 画像の入力エリア --}}
                                 <dd><input type="file" name="image" accept="image/png,image/jpeg"></dd>
 
                                 <dt>タイトル</dt>
-                                {{-- タイトルのエラーメッセージ --}}
-                                @if ($errors->has('title'))
-                                    {{$errors->first('title')}}
-                                @endif
-                                {{-- タイトルの入力エリア --}}
+                                <div class="color-red">
+                                    {{-- タイトルのエラーメッセージ --}}
+                                    @if ($errors->has('title'))
+                                        {{$errors->first('title')}}
+                                    @endif
+                                </div>    
+                                    {{-- タイトルの入力エリア --}}
                                 <dd><input type="text" name="title"></dd>
 
                                 <dt>タグ</dt>
-                                {{-- タグのエラーメッセージ --}}
-                                @if ($errors->has('tag'))
-                                    {{$errors->first('tag')}}
-                                @endif
+                                <div class="color-red">
+                                    {{-- タグのエラーメッセージ --}}
+                                    @if ($errors->has('tag'))
+                                        {{$errors->first('tag')}}
+                                    @endif
+                                </div>
                                 {{-- タグの入力エリア --}}
                                 <dd><input type="text" name="tag"></dd>
 
                                 <dt>本文</dt>
-                                {{-- 本文のエラーメッセージ --}}
-                                @if ($errors->has('body'))
-                                    {{$errors->first('body')}}
-                                @endif
+                                <div class="color-red">
+                                    {{-- 本文のエラーメッセージ --}}
+                                    @if ($errors->has('body'))
+                                        {{$errors->first('body')}}
+                                    @endif
+                                </div>
                                 {{-- 本文の入力エリア --}}
                                 <dd><textarea name="body"></textarea></dd>
 

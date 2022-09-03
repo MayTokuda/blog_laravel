@@ -14,7 +14,9 @@
                         </div>
                     @endif
                     @foreach ($errors->all() as $error)
-                    <li>{{$error}}</li>
+                    <div class="color-red">
+                        <li>{{$error}}</li>
+                    </div>
                     @endforeach
 
                     {{ __('プロフィール編集') }}

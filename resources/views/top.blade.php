@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="fv">
+  <img src="/img/" alt="">
+</div>
 <div class="loginPage">
   <div class="container">
     <div class="loginPage_contents">

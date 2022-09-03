@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('記事一覧') }}</div>
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -45,7 +45,7 @@
                                 {{-- <td>{{ $article->id }}</td> --}}
                                 <td><a href="/show/{{ $article->id }}">{{ $article->title }}</a></td>
                                 <td><img class="article-img" src="{{ \Storage::url($article->image) }}" width="75vw"></td>
-                                <td>{{ Str::limit( $article->body, 25 ) }}</td>
+                                <td>{{ $article->body }}</td>
                                 <td>{{ $article->created_at->format('Y-m-d')}}</td>
                                 <td>{{ $article->tags()->value('name') }}</td>
                             </tr>
