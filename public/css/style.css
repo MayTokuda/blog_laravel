@@ -1,3 +1,24 @@
+body {
+    background-color: #dee2d1;
+}
+a {
+    text-decoration: none;
+    color: gray;
+}
+.btn {
+    background-color: #6abe83;
+}
+.btn:hover {
+    background-color: #1f640a;
+}
+.btn-link {
+    color: white;
+    text-decoration: none;
+}
+.card-header {
+    background-color: #6abe83;
+    color: white;
+}
 img{
     max-width: 100%;
 }

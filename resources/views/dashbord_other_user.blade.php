@@ -96,9 +96,9 @@
                             @foreach($items as $item)
                                 <tr>
                                     <td><a href="/profile/{{$item->user->id}}">{{ $item->user->name }}</td>
-                                    <td><a href="/show/{{ $item->id }}">{{ $item->title }}</td>
+                                    <td><a href="/show/{{ $item->id }}">{{ Str::limit( $item->title, 20, '...') }}</td>
                                     <td><img class="article-img" src="{{ \Storage::url($item->image) }}" width="75vw"></td>
-                                    <td>{{ $item->body }}</td>
+                                    <td>{{ Str::limit( $item->body, 25, '...') }}</td>
                                     <td>{{ $item->created_at->format('Y-m-d') }}</td>
                                         @foreach($item->tags as $tag)
                                             <td>{{ $tag->name }}</td>
