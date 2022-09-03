@@ -22,6 +22,8 @@ class CRUDfunctionTest extends TestCase
     $this->another_user = User::factory()->create();
     // テストユーザーの記事作成
     $this->article = Article::factory()->create(['user_id' => $this->user->id]);
+
+    // dd($this->article);
     $tag = Tag::factory()->create(['name' => 'some-tag']);
     $this->article->tags()->attach($tag->id);
     }
@@ -33,7 +35,7 @@ class CRUDfunctionTest extends TestCase
      */
 
 
-    public function test_ログインしていれば投稿出来る() {
+    public function test_ログインしていれば投稿・一覧に表示することが出来る() {
 
     // ユーザーをログイン状態にして、投稿ページに遷移させる
     $response = $this->actingAs($this->user)->get(route('post_create'));
@@ -114,11 +116,48 @@ class CRUDfunctionTest extends TestCase
     $response->assertStatus(302); 
 
     // リダイレクトした時のurlリンク
-    $response->assertRedirect('/dashbord',$this->article->id); 
+    $response->assertRedirect('/dashbord', $this->article->id); 
 
     // 編集したレコードが存在するか
     $this->assertDatabaseHas('articles', ['title' => 'タイトル(編集成功)']);
     } 
+
+
+    public function test_ログインしているかつ、自分の投稿であれば削除出来る() 
+    {
+
+    // showページにアクセスした時にボタンが存在していること == 自分の投稿&ログインしている。
+
+    // ユーザーをログイン状態にする
+    $response = $this->actingAs($this->user);
+    // 詳細ページにアクセスする
+    $response = $this->get(route('show', $this->article->id ));
+    // dd($this->user);
+    // 詳細ページにアクセスでき、編集・削除ボタンが存在していることを確認する
+    $response->assertSee('編集', '削除');
+    $response->assertStatus(200);
+
+    // 削除する前にDBに存在するか確認
+    $this->assertDatabaseHas('articles',  ['id' => $this->article->id]);
+
+    //(1)deleteアクションに飛ばすためにパスをrouteメゾットを使用して定義する
+    $delete_url = route('delete', ['id' => $this->article->id]);
+    //(1)で定義したものをcontroller側に飛ばす
+    // $response = $this->delete($delete_url);
+    $response = $this->post($delete_url);
+    $response->assertSessionHasNoErrors(); 
+
+    // 削除された後は一覧ページに遷移しているか確認する
+    $response = $this->get('/dashbord');
+    $response->assertStatus(200);
+
+    // assertDeletedメソッドでarticleが削除されている事を確認します。
+    $this->assertDeleted($this->article);
+
+    // 削除したitemがデータベースに存在しないことを確認します
+    // $this->assertDatabaseMissing('articles', $this->article->id);
+    $this->assertDatabaseMissing('articles',  ['id' => $this->article->id]);
+    }
 
 
 }

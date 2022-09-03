@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Storage;
 
 class NewArticlePostTest extends TestCase
 {
+    use RefreshDatabase;
+    public function setUp(): void
+    {
+        // テストの定義(共通なもの)
+        parent::setUp();                   
+        // factoryを使用してテストユーザ作成
+        $this->user = User::factory()->create(); 
+        // {モデル名}::factory()->create();
+    }
+
     /**
      * 5.新規投稿画面 No.5
      * 新規ブログフォームに以下の内容を入力し、投稿するボタンを押下する
@@ -24,12 +34,16 @@ class NewArticlePostTest extends TestCase
      */
     public function test_example5_5()
     {
-        $this
-            ->actingAs(User::find(2)) //ダミーユーザーでログイン
-            ->get('/post_create');
+        //ダミーユーザーを作成する
+        $user = User::factory()->create();
+
+        //ダミーユーザーでログイン
+        $this->actingAs($user)
+                ->get('/post_create');
+
         $this->withoutExceptionHandling();
 
-        Storage::fake(); // ❌Storage::fake(’public’);
+        Storage::fake(); 
         $file = UploadedFile::fake()->image('avatar.jpg');                     
         $response = $this->withoutMiddleware()->json('POST', '/post_insert' ,[
             'image' => $file,
@@ -53,9 +67,13 @@ class NewArticlePostTest extends TestCase
      */
     public function test_example5_6()
     {
-        $this
-            ->actingAs(User::find(2)) //ダミーユーザーでログイン
-            ->get('/post_create');
+        //ダミーユーザーを作成する
+        $user = User::factory()->create();
+
+        //ダミーユーザーでログイン
+        $this->actingAs($user)
+                ->get('/post_create');
+
         $this->withoutExceptionHandling();
 
         Storage::fake(); 
@@ -82,9 +100,12 @@ class NewArticlePostTest extends TestCase
      */
     public function test_example5_7()
     {
-        $this
-            ->actingAs(User::find(2)) //ダミーユーザーでログイン
-            ->get('/post_create');
+        //ダミーユーザーを作成する
+        $user = User::factory()->create();
+
+        //ダミーユーザーでログイン
+        $this->actingAs($user)
+                ->get('/post_create');
 
         // 新規投稿でタイトルがnullの場合バリデーションが返される
         Storage::fake();
@@ -109,9 +130,12 @@ class NewArticlePostTest extends TestCase
      */
     public function test_example5_8()
     {
-        $this
-            ->actingAs(User::find(2)) //ダミーユーザーでログイン
-            ->get('/post_create');
+        //ダミーユーザーを作成する
+        $user = User::factory()->create();
+
+        //ダミーユーザーでログイン
+        $this->actingAs($user)
+                ->get('/post_create');
 
         // 新規投稿でタイトルがnullの場合バリデーションが返される
         Storage::fake();
@@ -136,9 +160,12 @@ class NewArticlePostTest extends TestCase
      */
     public function test_example5_9()
     {
-        $this
-            ->actingAs(User::find(2)) //ダミーユーザーでログイン
-            ->get('/post_create');
+        //ダミーユーザーを作成する
+        $user = User::factory()->create();
+
+        //ダミーユーザーでログイン
+        $this->actingAs($user)
+                ->get('/post_create');
 
         // 新規投稿でタイトルがnullの場合バリデーションが返される
         Storage::fake();
