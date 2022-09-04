@@ -49,7 +49,7 @@ class RegisterPostTest extends TestCase
         'remember_token' => '$2y$10$vH3LhLuEfhLPxtpxsQ7z8.ZEkXZQqfLX9uFG9snf30EZedPB58LJW'
         ]);
         // 新規登録ができたら /login にリダイレクトされるか
-        $response->assertRedirect('/');
+        $response->assertRedirect('/dashbord');
     }
 
     /**
