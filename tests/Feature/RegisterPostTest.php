@@ -50,6 +50,7 @@ class RegisterPostTest extends TestCase
         ]);
         // 新規登録ができたら /login にリダイレクトされるか
         $response->assertRedirect('/dashbord');
+
     }
 
     /**
