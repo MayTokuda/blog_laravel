@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('記事一覧') }}</div>
 
@@ -25,7 +25,7 @@
                     
                     <a href="{{ route('other_users') }}"><button type="button" class="btn btn-secondary">メンバーのブログ一覧</button></a></td>
 
-                    <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
+                    <table  class="table_article" width="70%" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
                                 {{-- <th>記事番号</th> --}}
@@ -50,7 +50,9 @@
                             </tr>
                             @endforeach
                         </tbody>
+                    </table>
 
+                    <table  class="table_tag" width="20%" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
                                 <th>タグの種類</th>
@@ -63,19 +65,6 @@
                             </tr>
                             @endforeach
                         </tbody>
-
-                        {{-- <thead>
-                            <tr>
-                                <th>日付</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($days as $day)
-                            <tr>
-                                <td>{{ $day->date}}</a></td>
-                            </tr>
-                            @endforeach
-                        </tbody> --}}
                     </table>
                 </div>
             </div>
