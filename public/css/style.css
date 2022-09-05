@@ -91,3 +91,10 @@ background-color: #6abe83
     color: #fff;
     font-size: 48px;
    }
+
+
+th {
+    color: #fff;/* 見出しの文字色 */
+    background-color: #6abe83; /* 見出しの背景色 */
+}
+

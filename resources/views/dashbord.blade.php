@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('記事一覧') }}</div>
 
@@ -28,10 +28,11 @@
                     <a href="{{ route('profile') }}"><button type="button" class="btn btn-secondary">プロフィール</button></a></td>
                     <a href="{{ route('other_users') }}"><button type="button" class="btn btn-secondary">メンバーのブログ一覧(全て)</button></a></td>
 
-                    <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
+
+
+                    <table  class="table_article" width="70%" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
-                                {{-- <th>記事番号</th> --}}
                                 <th>記事タイトル</th>
                                 <th>写真</th>
                                 <th>記事本文</th>
@@ -53,7 +54,7 @@
                         </tbody>
                     </table>
 
-                    <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
+                    <table  class="table_tag" width="20%" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
                                 <th>タグの種類</th>
@@ -68,7 +69,7 @@
                         </tbody>
                     </table>
 
-                    <table class="table" border="1" width="500" cellpadding="3" cellspacing="1">
+                    <table  class="table_date" width="20%" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
                                 <th>日付</th>
@@ -82,6 +83,9 @@
                             @endforeach 
                         </tbody>
                     </table>
+
+
+
                 </div>
             </div>
         </div>
