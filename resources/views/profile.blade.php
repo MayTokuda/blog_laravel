@@ -24,7 +24,12 @@
                     {{ $user->name}}さんのプロフィール<br>
 
                     <!-- プロフィール画像 -->
-                    <img class="user-img" src="{{ asset('storage/' .$user->profile_image) }}" width="75vw"><br>
+                    @if($user->profile_image == null)
+                        <img class="user-img" src=img src="/storage/no_image.jpg" width="75vw"><br>
+                    @else
+                        <img class="user-img" src="{{ asset('storage/' .$user->profile_image) }}" width="75vw"><br>
+                    @endif
+                    
 
                     <div class="row">
                         <label class="col-sm-2 control-label" for="username">ニックネーム</label>
