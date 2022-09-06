@@ -25,7 +25,8 @@
                         @csrf 
                         <dl class="form-list">
                             <dt>画像</dt>
-                            <dd><input type="file" name="profile_image" value="{{$user->profile_image}}" accept="image/png,image/jpeg"></dd>
+                            <img class="user-img" src="{{ asset('storage/' .$user->profile_image) }}" width="75vw"><br>
+                            <dd><label class="img-label" for="file_photo">画像を選択<input type="file" name="profile_image" id="file_photo" style="display:none;" value="{{$user->profile_image}}" accept="image/png,image/jpeg"></label></dd>
                             <dt>ニックネーム</dt>
                             <dd><input type="text" name="name" value="{{$user->name}}"></dd>
                             <dt>エリア</dt>
@@ -35,8 +36,8 @@
                             <dt>自己紹介文</dt>
                             <dd><textarea name="introduction" value="{{$user->introduction}}">{{$user->introduction}}</textarea></dd>
                         </dl>
-                        <button type="submit">登録する</button>
-                        <a href="{{ route('dashbord') }}">キャンセル</a>
+                        <button type="submit" class="btn btn-secondary">登録する</button>
+                        <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">キャンセル</button></a>
                     </form>
                     </main>
                 </div>

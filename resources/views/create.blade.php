@@ -65,8 +65,8 @@
 
                             </dl>
                             <button type="submit" class="btn btn-secondary">投稿する</button>
-                        </form>
                             <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">ブログの一覧に戻る</button></a></td>
+                        </form>
                     </main>
                 </div>
             </div>
