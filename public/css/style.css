@@ -30,6 +30,7 @@ a {
 }
 .btn {
     background-color: #6abe83;
+    margin: 0.5rem 0.25rem 0.5rem 0;
 }
 .btn:hover {
     background-color: #1f640a;
