@@ -99,3 +99,10 @@ th {
     background-color: #6abe83; /* 見出しの背景色 */
 }
 
+.img-label {
+    color: black;  
+    background-color: rgb(245, 244, 244);
+    padding: 3px;
+    border: 2px solid black ;
+    margin-top: 3px;
+  }
