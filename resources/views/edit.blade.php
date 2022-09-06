@@ -19,16 +19,39 @@
                     <form action="{{ route('update', ['id' => $article->id ] ) }}" method="POST" enctype="multipart/form-data">
                         @csrf 
                         <dl class="form-list">
-                            <dt>画像</dt>
-                            <!-- ラジオボックスを入れる -->
-                            
+                            <dt>画像</dt><div class="color-red">
+                                {{-- 本文のエラーメッセージ --}}
+                                @if ($errors->has('image'))
+                                    {{$errors->first('image')}}
+                                @endif
+                            </div>
                             <dd><input type="file" name="image" value="{{$article->image}}" accept="image/png,image/jpeg"></dd>
-                            <dt>タイトル</dt>
-                            <dd><input type="text" name="title" value="{{$article->title}}"></dd>
+
+                            <dt>タイトル</dt><div class="color-red">
+                                {{-- 本文のエラーメッセージ --}}
+                                @if ($errors->has('title'))
+                                    {{$errors->first('title')}}
+                                @endif
+                            </div>
+                            <dd><input type="text" name="title" value="{{$article->title}}" placeholder="20文字以下"></dd>
+
                             <dt>タグ</dt>
-                            <dd><input type="text" name="tag" value="{{$tag_str}}"></dd>
+                            <div class="color-red">
+                                {{-- 本文のエラーメッセージ --}}
+                                @if ($errors->has('tag'))
+                                    {{$errors->first('tag')}}
+                                @endif
+                            </div>
+                            <dd><input type="text" name="tag" value="{{$tag_str}}" placeholder="20文字以下"></dd>
+
                             <dt>本文</dt>
-                            <dd><textarea name="body" value="{{$article->body}}">{{$article->body}}</textarea></dd>
+                            <div class="color-red">
+                                {{-- 本文のエラーメッセージ --}}
+                                @if ($errors->has('body'))
+                                    {{$errors->first('body')}}
+                                @endif
+                            </div>
+                            <dd><textarea name="body" value="{{$article->body}}" placeholder="200文字以下">{{$article->body}}</textarea></dd>
                         </dl>
                         <button type="submit">投稿する</button>
                         <a href="{{ route('dashbord') }}">キャンセル</a>

@@ -1,12 +1,12 @@
 /* ----- 背景グラデーション ----- */
-body{
+/* body{
     background: linear-gradient(270deg, rgb(224, 214, 203, 0.3), rgb(121, 162, 152, 0.3), rgb(87, 144, 141, 0.3),rgb(35, 118, 130, 0.5));  
     background-size: 400% 400%;
 
     -webkit-animation: AnimationName 15s ease infinite;
     -moz-animation: AnimationName 15s ease infinite;
     animation: AnimationName 15s ease infinite;
-}
+} */
     
     @-webkit-keyframes AnimationName {
         0%{background-position:0% 50%}
@@ -82,7 +82,7 @@ background-color: #6abe83
     justify-content:center;
     align-items: center;
     margin:20% 0 ;
-   }
+    }
 .header-title p{
     width: 50%;
     text-align: center;
@@ -90,9 +90,9 @@ background-color: #6abe83
     margin: 0;
     color: #fff;
     font-size: 48px;
-   }
+    }
 
-
+/* ----- tableデザイン ----- */
 th {
     color: #fff;/* 見出しの文字色 */
     background-color: #6abe83; /* 見出しの背景色 */
