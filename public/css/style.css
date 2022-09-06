@@ -99,6 +99,58 @@ th {
     background-color: #6abe83; /* 見出しの背景色 */
 }
 
+
+/* ----- 入力ホームのデザイン ----- */
+input[type="file"] {
+    width: 100%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: 0.3s;
+    }
+
+input[type="file"]:focus {
+    border-color: #6abe83;
+    box-shadow: 0 0 8px 0 #6abe83;
+    }
+
+
+input[type="text"] {
+    width: 100%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: 0.3s;
+    }
+
+input[type="text"]:focus {
+    border-color: #6abe83;
+    box-shadow: 0 0 8px 0 #6abe83;
+    }
+
+
+textarea[name="body"] {
+    width: 100%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: 0.3s;
+    }
+    
+textarea[name="body"]:focus {
+    border-color: #6abe83;
+    box-shadow: 0 0 8px 0 #6abe83;
+    }
+
 .img-label {
     color: black;  
     background-color: rgb(245, 244, 244);
@@ -106,3 +158,4 @@ th {
     border: 2px solid black ;
     margin-top: 3px;
   }
+
