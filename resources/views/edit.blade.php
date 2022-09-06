@@ -20,9 +20,8 @@
                         @csrf 
                         <dl class="form-list">
                             <dt>画像</dt>
-                            <!-- ラジオボックスを入れる -->
-                            
-                            <dd><input type="file" name="image" value="{{$article->image}}" accept="image/png,image/jpeg"></dd>
+                            <img class="article-img" src="{{ \Storage::url($article->image) }}" alt="" width="100%">
+                            <dd><label class="img-label" for="file_photo">画像を選択<input type="file" name="image" id="file_photo" style="display:none;" value="{{$article->image}}" accept="image/png,image/jpeg"></label></dd>
                             <dt>タイトル</dt>
                             <dd><input type="text" name="title" value="{{$article->title}}"></dd>
                             <dt>タグ</dt>
