@@ -30,8 +30,8 @@
                             <dt>本文</dt>
                             <dd><textarea name="body" value="{{$article->body}}">{{$article->body}}</textarea></dd>
                         </dl>
-                        <button type="submit">投稿する</button>
-                        <a href="{{ route('dashbord') }}">キャンセル</a>
+                        <button type="submit" class="btn btn-secondary">投稿する</button>
+                        <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">キャンセル</button></a>
                     </form>
                     </main>
                 </div>

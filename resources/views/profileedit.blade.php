@@ -35,8 +35,8 @@
                             <dt>自己紹介文</dt>
                             <dd><textarea name="introduction" value="{{$user->introduction}}">{{$user->introduction}}</textarea></dd>
                         </dl>
-                        <button type="submit">登録する</button>
-                        <a href="{{ route('dashbord') }}">キャンセル</a>
+                        <button type="submit" class="btn btn-secondary">登録する</button>
+                        <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">キャンセル</button></a>
                     </form>
                     </main>
                 </div>
