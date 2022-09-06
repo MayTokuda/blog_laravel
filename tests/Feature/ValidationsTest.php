@@ -75,14 +75,14 @@ class ValidationsTest extends TestCase
             'expect_tag'   => ['tag', 'タグ名', true],
             'required_tag_01' => ['tag', null, false],
             'required_tag_02' => ['tag', '', false],
-            'max_tag_01'      => ['tag', str_repeat('a', 16), false],
-            'max_tag_02'      => ['tag', str_repeat('a', 15), true],
+            'max_tag_01'      => ['tag', str_repeat('a', 21), false],
+            'max_tag_02'      => ['tag', str_repeat('a', 20), true],
 
             'expect_body'   => ['body', '本文', true],
             'required_body_01' => ['body', null, false],
             'required_body_02' => ['body', '', false],
-            'max_body_01'      => ['body', str_repeat('a', 26), false],
-            'max_body_02'      => ['body', str_repeat('a', 25), true],
+            'max_body_01'      => ['body', str_repeat('a', 201), false],
+            'max_body_02'      => ['body', str_repeat('a', 200), true],
 
             'required_image_01' => ['image', null, false],
             'required_image_02' => ['image', '', false],

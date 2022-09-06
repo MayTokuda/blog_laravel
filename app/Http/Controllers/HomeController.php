@@ -357,16 +357,13 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     // 変更処理(editの更新ボタン)--->画面なし
-    public function update(Request $request, $id)
+    public function update(BlogRequest $request, $id)
     {
 
-        //必須項目にする処理
-        $this->validate($request, [
-        //     'image' => 'required',
-            'title' => 'required|max:255',
-        //     'tag' => 'required',
-            'body' => 'required'
-        ]);
+        // 投稿者以外が編集できなくする処理
+        if (auth()->user()->id != $article->user_id) {
+            return redirect(route('show'))->with('error', '許可されていない操作です');
+        }
 
         // 更新記事をarticlesテーブルに入れる処理（更新）
         $article = Article::find($id);

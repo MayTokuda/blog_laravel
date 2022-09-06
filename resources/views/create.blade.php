@@ -29,6 +29,7 @@
                                 {{-- 画像の入力エリア --}}
                                 <dd><input type="file" name="image" accept="image/png,image/jpeg"></dd>
 
+
                                 <dt>タイトル</dt>
                                 <div class="color-red">
                                     {{-- タイトルのエラーメッセージ --}}
@@ -37,7 +38,8 @@
                                     @endif
                                 </div>    
                                     {{-- タイトルの入力エリア --}}
-                                <dd><input type="text" name="title"></dd>
+                                <dd><input type="text" name="title" placeholder="20文字以下"></dd>
+
 
                                 <dt>タグ</dt>
                                 <div class="color-red">
@@ -47,7 +49,8 @@
                                     @endif
                                 </div>
                                 {{-- タグの入力エリア --}}
-                                <dd><input type="text" name="tag"></dd>
+                                <dd><input type="text" name="tag" placeholder="20文字以下"></dd>
+
 
                                 <dt>本文</dt>
                                 <div class="color-red">
@@ -57,7 +60,8 @@
                                     @endif
                                 </div>
                                 {{-- 本文の入力エリア --}}
-                                <dd><textarea name="body"></textarea></dd>
+                                <dd><textarea name="body" placeholder="200文字以下"></textarea></dd>
+
 
                             </dl>
                             <button type="submit" class="btn btn-secondary">投稿する</button>
