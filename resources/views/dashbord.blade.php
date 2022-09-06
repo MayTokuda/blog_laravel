@@ -30,7 +30,7 @@
 
 
 
-                    <table  class="table_article" width="70%" cellpadding="3" cellspacing="1">
+                    <table  class="table-article me-3" align="left" width="70%" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
                                 <th>記事タイトル</th>
@@ -54,7 +54,7 @@
                         </tbody>
                     </table>
 
-                    <table  class="table_tag" width="20%" cellpadding="3" cellspacing="1">
+                    <table  class="table-tag" align="left" width="28.5%" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
                                 <th>タグの種類</th>
@@ -69,7 +69,7 @@
                         </tbody>
                     </table>
 
-                    <table  class="table_date" width="20%" cellpadding="3" cellspacing="1">
+                    <table  class="table-date" width="28.5%" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
                                 <th>日付</th>
