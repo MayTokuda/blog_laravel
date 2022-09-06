@@ -38,7 +38,7 @@
                                     @endif
                                 </div>    
                                     {{-- タイトルの入力エリア --}}
-                                <dd><input type="text" name="title" placeholder="20文字以下"></dd>
+                                    <dd><input type="text" name="title" placeholder="20文字以下"></dd>
 
 
                                 <dt>タグ</dt>
