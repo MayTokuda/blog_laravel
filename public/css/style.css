@@ -52,6 +52,11 @@ a {
 img{
     max-width: 100%;
 }
+.show-img {
+    width: 400px;
+   height: 300px;
+   object-fit:cover;
+}
 .fv{
     background-size: cover;
     position: absolute;  /* 文字重ねる*/
