@@ -25,9 +25,9 @@
 
                     <!-- プロフィール画像 -->
                     @if($user->profile_image == 'no_image.jpg')
-                        <img class="user-img" src="{{ asset('no_image.jpg') }}" width="75vw"><br>
+                        <img class="user-img prof-img" src="{{ asset('no_image.jpg') }}" width="75vw"><br>
                     @else
-                        <img class="user-img" src="{{ asset('storage/' .$user->profile_image) }}" width="75vw"><br>
+                        <img class="user-img prof-img" src="{{ asset('storage/' .$user->profile_image) }}" width="75vw"><br>
                     @endif
                     
 

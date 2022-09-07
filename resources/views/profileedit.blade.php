@@ -28,7 +28,7 @@
 
                             {{-- <dd><input type="file" name="profile_image" value="{{$user->profile_image}}" accept="image/png,image/jpeg"></dd> --}}
                             
-                            <img class="user-img" src="{{ asset('storage/' .$user->profile_image) }}" width="75vw"><br>
+                            <img class="user-img prof-img" src="{{ asset('storage/' .$user->profile_image) }}" width="75vw"><br>
                             <input type="file" name="profile_image" id="file_photo" style="display:none;" value="{{$user->profile_image}}" accept="image/png,image/jpeg">
 
                             <dd><label class="img-label" for="file_photo">画像を選択</label></dd>
