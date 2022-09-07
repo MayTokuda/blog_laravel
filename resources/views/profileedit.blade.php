@@ -27,7 +27,7 @@
                             <dt>画像</dt>
 
                             {{-- <dd><input type="file" name="profile_image" value="{{$user->profile_image}}" accept="image/png,image/jpeg"></dd> --}}
-
+                            
                             <img class="user-img" src="{{ asset('storage/' .$user->profile_image) }}" width="75vw"><br>
                             <input type="file" name="profile_image" id="file_photo" style="display:none;" value="{{$user->profile_image}}" accept="image/png,image/jpeg">
 
@@ -45,8 +45,8 @@
                             <dt>自己紹介文</dt>
                             <dd><textarea name="body" value="{{$user->introduction}}">{{$user->introduction}}</textarea></dd>
                         </dl>
-                        <button type="submit">登録する</button>
-                        <a href="{{ route('dashbord') }}">キャンセル</a>
+                        <button type="submit" class="btn btn-secondary">登録する</button>
+                        <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">キャンセル</button></a>
                     </form>
                     </main>
                 </div>

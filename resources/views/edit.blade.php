@@ -41,7 +41,6 @@
                             </div>
 
                             <dd><input type="text" name="title" value="{{$article->title}}" placeholder="タイトルの文字入力は「20文字以下」です。"></dd>
-                            
 
                             <dt>タグ</dt>
                             <div class="color-red">
@@ -61,8 +60,8 @@
                             </div>
                             <dd><textarea name="body" value="{{$article->body}}" placeholder="ブログ本文の文字入力は「20文字以下」です。">{{$article->body}}</textarea></dd>
                         </dl>
-                        <button type="submit">投稿する</button>
-                        <a href="{{ route('dashbord') }}">キャンセル</a>
+                        <button type="submit" class="btn btn-secondary">投稿する</button>
+                        <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">キャンセル</button></a>
                     </form>
                     </main>
                 </div>

@@ -34,9 +34,7 @@ a {
     color: gray;
 }
 .btn {
-
     /* background-color: #6abe83; */
-
     background-color: #d8c8ae;
     margin: 0.5rem 0.25rem 0.5rem 0;
 }
@@ -107,6 +105,7 @@ th {
     background-color: #d8c8ae; /* 見出しの背景色 */
 }
 
+
 /* ----- 入力ホームのデザイン ----- */
 input[type="file"] {
     width: 100%;
@@ -157,3 +156,12 @@ textarea[name="body"]:focus {
     border-color: #d8c8ae;
     box-shadow: 0 0 8px 0 #d8c8ae;
     }
+
+.img-label {
+    color: black;  
+    background-color: rgb(245, 244, 244);
+    padding: 3px;
+    border: 2px solid black ;
+    margin-top: 3px;
+  }
+

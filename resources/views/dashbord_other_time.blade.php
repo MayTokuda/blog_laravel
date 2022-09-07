@@ -21,11 +21,11 @@
                         </p>
                     @endif
 
-					{{-- <?php $user = Auth::user(); ?>{{ $user->name}}さん→他ユーザーのブログ<br> --}}
-                    
-                    <a href="{{ route('other_users') }}"><button type="button" class="btn btn-secondary">メンバーのブログ一覧</button></a></td>
+                    <div>
+                        <a href="{{ route('other_users') }}"><button type="button" class="btn btn-secondary">メンバーのブログ一覧</button></a></td>
+                    </div>
 
-                    <table  class="table_article" width="70%" cellpadding="3" cellspacing="1">
+                    <table  class="table-article me-3" align="left" width="70%" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
                                 {{-- <th>記事番号</th> --}}
@@ -51,7 +51,7 @@
                             @endforeach
                         </tbody>
 
-                    <table  class="table_date" width="20%" cellpadding="3" cellspacing="1">
+                    <table  class="table-date" width="28.5%" cellpadding="3" cellspacing="1">
                         <thead>
                             <tr>
                                 <th>日付</th>
