@@ -45,7 +45,7 @@
                             <tr>
                                 {{-- <td>{{ $article->id }}</td> --}}
                                 <td><a href="/show/{{ $article->id }}">{{ Str::limit( $article->title, 20, '...') }}</a></td>
-                                <td><img class="article-img" src="{{ \Storage::url($article->image) }}" width="75vw"></td>
+                                <td><img class="article-img small-img" src="{{ \Storage::url($article->image) }}" width="75vw"></td>
                                 <td>{{ Str::limit( $article->body, 25, '...') }}</td>
                                 <td>{{ $article->created_at->format('Y-m-d')}}</td>
                                 <td>{{ $article->tags()->value('name') }}</td>

@@ -43,7 +43,7 @@
 							{{-- <td>{{ $article->id }}</td> --}}
                                 <td>{{ $article->user->name }}</td>
                                 <td><a href="/show/{{ $article->id }}">{{ $article->title }}</a></td>
-                                <td><img class="article-img" src="{{ \Storage::url($article->image) }}" width="75vw"></td>
+                                <td><img class="article-img small-img" src="{{ \Storage::url($article->image) }}" width="75vw"></td>
                                 <td>{{ $article->body }}</td>
                                 <td>{{ $article->updated_at->format('Y-m-d')}}</td>
                                 <td>{{ $article->tags()->value('name') }}</td>
