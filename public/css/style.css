@@ -111,8 +111,22 @@ background-color: #d8c8ae
     padding: 20px;
     margin: 0;
     color: #fff;
-    font-size: 48px;
-    }
+    font-size: 100px;
+}
+.header-title a{
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    color: #fff;
+    font-size: 25px;
+}
+.header-title a:hover{
+    color: #738e99;
+}
+.under{
+    border-bottom: solid 3px #738e99;
+}
 
 /* ----- tableデザイン ----- */
 th {
@@ -178,5 +192,6 @@ textarea[name="body"]:focus {
     padding: 3px;
     border: 2px solid black ;
     margin-top: 3px;
-  }
+    }
+
 

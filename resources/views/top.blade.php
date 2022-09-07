@@ -93,7 +93,18 @@
                 <video id="bg-video" src="css/img/productionID_4782594_edit.mp4" autoplay muted loop></video>
                 <!-- 背景の上に表示させたいコンテンツ -->
                 <div class="header-title">
-                    <p>BLOG へようこそ</p>
+                    <p>Blog</p>
+
+                    @guest
+                        <a href="{{ route('login') }}"><span class="under">login</span></a></td>
+                        <a href="{{ route('register') }}"><span class="under">Create account</span></a></td>
+                    @endguest
+
+                    @auth
+                        <a href="{{ route('dashbord') }}"><span class="under">my article</span></a></td>
+                        <a href="{{ route('other_users') }}"><span class="under">articles by others</span></a></td>
+                    @endauth
+
                 </div>
             </div>
 
