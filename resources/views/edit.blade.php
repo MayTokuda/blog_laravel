@@ -26,6 +26,7 @@
                                 @endif
                             </div>
 
+
                             {{-- <dd><input type="file" name="image" value="{{$article->image}}" accept="image/png,image/jpeg"></dd> --}}
 
                             <img class="article-img" src="{{ \Storage::url($article->image) }}" alt="" width="100%">
