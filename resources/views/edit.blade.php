@@ -25,7 +25,7 @@
                                     {{$errors->first('image')}}
                                 @endif
                             </div>
-                            <img class="article-img" src="{{ \Storage::url($article->image) }}" alt="" width="100%">
+                            <img class="article-img show-img" src="{{ \Storage::url($article->image) }}" alt="" width="100%">
                             <dd><label class="img-label" for="file_photo">画像を選択<input type="file" name="image" id="file_photo" style="display:none;" value="{{$article->image}}" accept="image/png,image/jpeg"></label></dd>
 
                             <dt>タイトル</dt><div class="color-red">

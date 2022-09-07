@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <h2>{{ $article->title }}</h2>
-                            <img class="article-img" src="{{ \Storage::url($article->image) }}" alt="" width="100%">
+                            <img class="article-img show-img" src="{{ \Storage::url($article->image) }}" alt="" width="100%">
                             <p>{{ $article->body }}</p>
                             <p>タグ：{{ $article->tags()->value('name') }}</p>
                             <p>作成日：{{ substr($article->created_at,0,11) }} &ensp;&ensp; 更新日：{{ substr($article->updated_at,0,11) }}</p>
