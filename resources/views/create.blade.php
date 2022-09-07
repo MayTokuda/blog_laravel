@@ -29,7 +29,6 @@
                                 {{-- 画像の入力エリア --}}
                                 <dd><input type="file" name="image" accept="image/png,image/jpeg"></dd>
 
-
                                 <dt>タイトル</dt>
                                 <div class="color-red">
                                     {{-- タイトルのエラーメッセージ --}}

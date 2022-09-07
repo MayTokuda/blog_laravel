@@ -6,7 +6,7 @@
     -webkit-animation: AnimationName 15s ease infinite;
     -moz-animation: AnimationName 15s ease infinite;
     animation: AnimationName 15s ease infinite;
-} */
+}
     
     @-webkit-keyframes AnimationName {
         0%{background-position:0% 50%}
@@ -22,25 +22,31 @@
         0%{background-position:0% 50%}
         50%{background-position:100% 50%}
         100%{background-position:0% 50%}
-    }
+    } */
+
+body{
+    background-color: #e7e0cf;
+    /* background-image: url('2610418_l.jpf'); */
+}
 
 a {
     text-decoration: none;
     color: gray;
 }
 .btn {
-    background-color: #6abe83;
+    /* background-color: #6abe83; */
+    background-color: #d8c8ae;
     margin: 0.5rem 0.25rem 0.5rem 0;
 }
 .btn:hover {
-    background-color: #1f640a;
+    background-color: #c7c6c1;
 }
 .btn-link {
     color: white;
     text-decoration: none;
 }
 .card-header {
-    background-color: #6abe83;
+    background-color: #d8c8ae;
     color: white;
 }
 img{
@@ -63,7 +69,7 @@ img{
     color: red;
 }
 .testtest{
-background-color: #6abe83
+background-color: #d8c8ae
 ;}
 
 
@@ -101,7 +107,7 @@ background-color: #6abe83
 /* ----- tableデザイン ----- */
 th {
     color: #fff;/* 見出しの文字色 */
-    background-color: #6abe83; /* 見出しの背景色 */
+    background-color: #d8c8ae; /* 見出しの背景色 */
 }
 
 
@@ -118,8 +124,8 @@ input[type="file"] {
     }
 
 input[type="file"]:focus {
-    border-color: #6abe83;
-    box-shadow: 0 0 8px 0 #6abe83;
+    border-color: #d8c8ae;
+    box-shadow: 0 0 8px 0 #d8c8ae;
     }
 
 
@@ -135,8 +141,8 @@ input[type="text"] {
     }
 
 input[type="text"]:focus {
-    border-color: #6abe83;
-    box-shadow: 0 0 8px 0 #6abe83;
+    border-color: #d8c8ae;
+    box-shadow: 0 0 8px 0 #d8c8ae;
     }
 
 
@@ -152,8 +158,8 @@ textarea[name="body"] {
     }
     
 textarea[name="body"]:focus {
-    border-color: #6abe83;
-    box-shadow: 0 0 8px 0 #6abe83;
+    border-color: #d8c8ae;
+    box-shadow: 0 0 8px 0 #d8c8ae;
     }
 
 .img-label {

@@ -25,8 +25,14 @@
                                     {{$errors->first('image')}}
                                 @endif
                             </div>
-                            <img class="article-img show-img" src="{{ \Storage::url($article->image) }}" alt="" width="100%">
-                            <dd><label class="img-label" for="file_photo">画像を選択<input type="file" name="image" id="file_photo" style="display:none;" value="{{$article->image}}" accept="image/png,image/jpeg"></label></dd>
+
+
+                            {{-- <dd><input type="file" name="image" value="{{$article->image}}" accept="image/png,image/jpeg"></dd> --}}
+
+                            <img class="article-img" src="{{ \Storage::url($article->image) }}" alt="" width="100%">
+                            <input type="file" name="image" id="file_photo" style="display:none;" value="{{$article->image}}" accept="image/png,image/jpeg">
+                            
+                            <dd><label class="img-label" for="file_photo">画像を選択</label></dd>
 
                             <dt>タイトル</dt><div class="color-red">
                                 {{-- 本文のエラーメッセージ --}}
@@ -34,8 +40,9 @@
                                     {{$errors->first('title')}}
                                 @endif
                             </div>
-                            <dd><input type="text" name="title" value="{{$article->title}}" placeholder="20文字以下"></dd>
-                            
+
+                            <dd><input type="text" name="title" value="{{$article->title}}" placeholder="タイトルの文字入力は「20文字以下」です。"></dd>
+
                             <dt>タグ</dt>
                             <div class="color-red">
                                 {{-- 本文のエラーメッセージ --}}
@@ -43,7 +50,7 @@
                                     {{$errors->first('tag')}}
                                 @endif
                             </div>
-                            <dd><input type="text" name="tag" value="{{$tag_str}}" placeholder="20文字以下"></dd>
+                            <dd><input type="text" name="tag" value="{{$tag_str}}" placeholder="タグの文字入力は「20文字以下」です。"></dd>
 
                             <dt>本文</dt>
                             <div class="color-red">
@@ -52,7 +59,7 @@
                                     {{$errors->first('body')}}
                                 @endif
                             </div>
-                            <dd><textarea name="body" value="{{$article->body}}" placeholder="200文字以下">{{$article->body}}</textarea></dd>
+                            <dd><textarea name="body" value="{{$article->body}}" placeholder="ブログ本文の文字入力は「20文字以下」です。">{{$article->body}}</textarea></dd>
                         </dl>
                         <button type="submit" class="btn btn-secondary">投稿する</button>
                         <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">キャンセル</button></a>
