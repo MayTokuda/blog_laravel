@@ -27,8 +27,8 @@
                                     @endif
                                 </div>
                                 {{-- 画像の入力エリア --}}
-                                <dd><input type="file" name="image" accept="image/png,image/jpeg"></dd>
-
+                                <dd><input type="file" id="myImage" accept="image/png,image/jpeg"></dd>
+                                <img id="preview">
 
                                 <dt>タイトル</dt>
                                 <div class="color-red">
@@ -38,7 +38,7 @@
                                     @endif
                                 </div>    
                                     {{-- タイトルの入力エリア --}}
-                                    <dd><input type="text" name="title" placeholder="20文字以下"></dd>
+                                    <dd><input type="text" name="title" placeholder="タイトルの文字入力は「20文字以下」です。"></dd>
 
 
                                 <dt>タグ</dt>
@@ -49,7 +49,7 @@
                                     @endif
                                 </div>
                                 {{-- タグの入力エリア --}}
-                                <dd><input type="text" name="tag" placeholder="20文字以下"></dd>
+                                <dd><input type="text" name="tag" placeholder="タグの文字入力は「20文字以下」です。"></dd>
 
 
                                 <dt>本文</dt>
@@ -60,7 +60,7 @@
                                     @endif
                                 </div>
                                 {{-- 本文の入力エリア --}}
-                                <dd><textarea name="body" placeholder="200文字以下"></textarea></dd>
+                                <dd><textarea name="body" placeholder="ブログ本文の文字入力は「200文字以下」です。"></textarea></dd>
 
 
                             </dl>
@@ -73,4 +73,5 @@
         </div>
     </div>
 </div>
+
 @endsection
