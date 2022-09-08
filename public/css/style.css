@@ -138,11 +138,11 @@ background-color: #d8c8ae
 /* ----- tableデザイン ----- */
 th {
     color: #fff;/* 見出しの文字色 */
-    background-color: #6f7c82; /* 見出しの背景色 */
+    background-color: #d8c8ae; /* 見出しの背景色 */
 }
 .table-box {
     display:flex;
-　　　　　　　　flex-flow: column;
+    flex-flow: column;
 }
 
 /* ----- 入力ホームのデザイン ----- */
