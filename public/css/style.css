@@ -152,7 +152,6 @@ input[type="file"]:focus {
     box-shadow: 0 0 8px 0 #d8c8ae;
     }
 
-
 input[type="text"] {
     width: 100%;
     border: 2px solid #aaa;
@@ -169,6 +168,21 @@ input[type="text"]:focus {
     box-shadow: 0 0 8px 0 #d8c8ae;
     }
 
+textarea[name="introduction"] {
+    width: 100%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+    
+textarea[name="introduction"]:focus {
+    border-color: #d8c8ae;
+    box-shadow: 0 0 8px 0 #d8c8ae;
+}
 
 textarea[name="body"] {
     width: 100%;
