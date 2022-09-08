@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 /* ----- 背景グラデーション ----- */
 /* body{
     background: linear-gradient(270deg, rgb(224, 214, 203, 0.3), rgb(121, 162, 152, 0.3), rgb(87, 144, 141, 0.3),rgb(35, 118, 130, 0.5));  
@@ -112,6 +113,7 @@ background-color: #d8c8ae
     margin: 0;
     color: #fff;
     font-size: 100px;
+    font-family: 'Sacramento', cursive;
 }
 .header-title a{
     width: 50%;
@@ -208,4 +210,11 @@ textarea[name="body"]:focus {
     margin-top: 3px;
     }
 
+/* NavbarのBlog文字 */
+a.navbar-brand{
+    color: #d8c8ae
+}
+a.navbar-brand:hover{
+    color: #738e99;
+}
 
