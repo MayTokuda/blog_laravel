@@ -367,7 +367,7 @@ class HomeController extends Controller
 
         // 更新記事をarticlesテーブルに入れる処理（更新）
         $article = Article::find($id);
-        
+
         // if文で三つ処理を追加
         if ($request->image != null) {
             $article->image = $request->file('image')->store('public');
