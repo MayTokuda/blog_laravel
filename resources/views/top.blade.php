@@ -95,6 +95,7 @@
                 <div class="header-title">
                     <p>Blog</p>
 
+                    <div class="content-link">
                     @guest
                         <a href="{{ route('login') }}"><span class="under">login</span></a></td>
                         <a href="{{ route('register') }}"><span class="under">Create account</span></a></td>
@@ -104,7 +105,7 @@
                         <a href="{{ route('dashbord') }}"><span class="under">my article</span></a></td>
                         <a href="{{ route('other_users') }}"><span class="under">articles by others</span></a></td>
                     @endauth
-
+                    </div>
                 </div>
             </div>
 

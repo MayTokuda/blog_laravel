@@ -54,36 +54,37 @@
                         </tbody>
                     </table>
 
-                    <table  class="table-tag" align="left" width="28.5%" cellpadding="3" cellspacing="1">
-                        <thead>
-                            <tr>
-                                <th>タグの種類</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($tags as $tag)
-                            <tr>
-                                <td><a href="/search/{{ $tag->name }}">{{ $tag->name }}({{ $tag->count_name }})</a></td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div class="table-box">
+                        <table  class="table-tag" align="left" width="100%" cellpadding="3" cellspacing="1">
+                            <thead>
+                                <tr>
+                                    <th>タグの種類</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($tags as $tag)
+                                <tr>
+                                    <td><a href="/search/{{ $tag->name }}">{{ $tag->name }}({{ $tag->count_name }})</a></td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
 
-                    <table  class="table-date" width="28.5%" cellpadding="3" cellspacing="1">
-                        <thead>
-                            <tr>
-                                <th>日付</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($days as $day)
-                            <tr>
-                                <td><a href="/search_time/{{ $day->date }}">{{ $day->date }}</a></td>
-                            </tr>
-                            @endforeach 
-                        </tbody>
-                    </table>
-
+                        <table  class="table-date" width="100%" cellpadding="3" cellspacing="1">
+                            <thead>
+                                <tr>
+                                    <th>日付</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($days as $day)
+                                <tr>
+                                    <td><a href="/search_time/{{ $day->date }}">{{ $day->date }}</a></td>
+                                </tr>
+                                @endforeach 
+                            </tbody>
+                        </table>
+                    </div>
 
 
                 </div>
