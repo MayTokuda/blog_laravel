@@ -25,7 +25,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <!-- {{ config('app.name', 'Laravel') }} -->
-                    BLOG
+                    Blog
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -95,6 +95,7 @@
                 <div class="header-title">
                     <p>Blog</p>
 
+                    <div class="content-link">
                     @guest
                         <a href="{{ route('login') }}"><span class="under">login</span></a></td>
                         <a href="{{ route('register') }}"><span class="under">Create account</span></a></td>
@@ -104,7 +105,7 @@
                         <a href="{{ route('dashbord') }}"><span class="under">my article</span></a></td>
                         <a href="{{ route('other_users') }}"><span class="under">articles by others</span></a></td>
                     @endauth
-
+                    </div>
                 </div>
             </div>
 

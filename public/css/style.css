@@ -104,6 +104,7 @@ background-color: #d8c8ae
     justify-content:center;
     align-items: center;
     margin:20% 0 ;
+    width: 100%;
     }
 .header-title p{
     width: 50%;
@@ -113,25 +114,29 @@ background-color: #d8c8ae
     color: #fff;
     font-size: 100px;
 }
+.header-title .content-link{
+    display: flex;
+    flex-flow: column;
+}
 .header-title a{
-    width: 50%;
+    width: 250px;
     text-align: center;
-    padding: 10px;
-    margin: 0;
-    color: #fff;
+    color: #6f7c82;
     font-size: 25px;
+    border: solid 1.5px #6f7c82;
+    border-radius: 20px;
+}
+.header-title a:nth-child(1){
+    margin-bottom: 20px;
 }
 .header-title a:hover{
-    color: #738e99;
+    color: #fff;
+    background-color: #6f7c82;
 }
-.under{
-    border-bottom: solid 3px #738e99;
-}
-
 /* ----- tableデザイン ----- */
 th {
     color: #fff;/* 見出しの文字色 */
-    background-color: #d8c8ae; /* 見出しの背景色 */
+    background-color: #6f7c82; /* 見出しの背景色 */
 }
 
 
@@ -194,4 +199,7 @@ textarea[name="body"]:focus {
     margin-top: 3px;
     }
 
-
+.table-box {
+    display:flex;
+    flex-flow: column;
+}
