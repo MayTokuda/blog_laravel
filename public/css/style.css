@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 /* ----- 背景グラデーション ----- */
 /* body{
     background: linear-gradient(270deg, rgb(224, 214, 203, 0.3), rgb(121, 162, 152, 0.3), rgb(87, 144, 141, 0.3),rgb(35, 118, 130, 0.5));  
@@ -113,6 +114,7 @@ background-color: #d8c8ae
     margin: 0;
     color: #fff;
     font-size: 100px;
+    font-family: 'Sacramento', cursive;
 }
 .header-title .content-link{
     display: flex;
@@ -138,7 +140,10 @@ th {
     color: #fff;/* 見出しの文字色 */
     background-color: #6f7c82; /* 見出しの背景色 */
 }
-
+.table-box {
+    display:flex;
+　　　　　　　　flex-flow: column;
+}
 
 /* ----- 入力ホームのデザイン ----- */
 input[type="file"] {
@@ -157,7 +162,6 @@ input[type="file"]:focus {
     box-shadow: 0 0 8px 0 #d8c8ae;
     }
 
-
 input[type="text"] {
     width: 100%;
     border: 2px solid #aaa;
@@ -174,6 +178,21 @@ input[type="text"]:focus {
     box-shadow: 0 0 8px 0 #d8c8ae;
     }
 
+textarea[name="introduction"] {
+    width: 100%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+    
+textarea[name="introduction"]:focus {
+    border-color: #d8c8ae;
+    box-shadow: 0 0 8px 0 #d8c8ae;
+}
 
 textarea[name="body"] {
     width: 100%;
@@ -199,7 +218,11 @@ textarea[name="body"]:focus {
     margin-top: 3px;
     }
 
-.table-box {
-    display:flex;
-    flex-flow: column;
+/* NavbarのBlog文字 */
+a.navbar-brand{
+    color: #d8c8ae
 }
+a.navbar-brand:hover{
+    color: #738e99;
+}
+

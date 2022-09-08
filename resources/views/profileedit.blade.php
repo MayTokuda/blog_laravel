@@ -43,7 +43,7 @@
                             <dd><input type="text" name="hobby" value="{{$user->hobby}}"></dd>
 
                             <dt>自己紹介文</dt>
-                            <dd><textarea name="body" value="{{$user->introduction}}">{{$user->introduction}}</textarea></dd>
+                            <dd><textarea name="introduction" value="{{$user->introduction}}">{{$user->introduction}}</textarea></dd>
                         </dl>
                         <button type="submit" class="btn btn-secondary">登録する</button>
                         <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">キャンセル</button></a>
