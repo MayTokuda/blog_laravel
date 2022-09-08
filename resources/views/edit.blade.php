@@ -26,11 +26,14 @@
                                 @endif
                             </div>
 
-                            <img class="article-img show-img" src="{{ \Storage::url($article->image) }}" alt="" width="100%">
+                            <!-- <img class="article-img show-img" src="{{ \Storage::url($article->image) }}" alt="" width="100%"> -->
                             <!-- <input type="file" name="image" id="file_photo" style="display:none;" value="{{$article->image}}" accept="image/png,image/jpeg">
                             
                             <dd><label class="img-label" for="file_photo">画像を選択</label></dd> -->
-                            <dd><input type="file" name="image" value="{{$article->image}}" accept="image/png,image/jpeg"></dd>
+                            <!-- <dd><input type="file" name="image" value="{{$article->image}}" accept="image/png,image/jpeg"></dd> -->
+                            <!-- 選択した画像を表示する処理 -->
+                            <img id="sample1" class="article-img show-img" alt="" width="100%">
+                            <input type="file" id="input1" name="image" value="{{$article->image}}"/>
 
                             <dt>タイトル</dt><div class="color-red">
                                 {{-- 本文のエラーメッセージ --}}
