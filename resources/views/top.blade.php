@@ -65,7 +65,7 @@
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="{{ route('other_users') }}">
-                                            {{ __('User一覧') }}
+                                            {{ __('登録ユーザー記事一覧一覧') }}
                                         </a>
                                     </li>
                                     <li>
