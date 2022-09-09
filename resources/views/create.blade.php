@@ -61,7 +61,7 @@
                                     @endif
                                 </div>
                                 {{-- 本文の入力エリア --}}
-                                <dd><textarea name="body" placeholder="ブログ本文の文字入力は「20文字以下」です。"></textarea></dd>
+                                <dd><textarea name="body" placeholder="ブログ本文の文字入力は「200文字以下」です。"></textarea></dd>
 
 
                             </dl>

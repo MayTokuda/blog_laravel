@@ -58,7 +58,7 @@
                                     {{$errors->first('body')}}
                                 @endif
                             </div>
-                            <dd><textarea name="body" value="{{$article->body}}" placeholder="ブログ本文の文字入力は「20文字以下」です。">{{$article->body}}</textarea></dd>
+                            <dd><textarea name="body" value="{{$article->body}}" placeholder="ブログ本文の文字入力は「200文字以下」です。">{{$article->body}}</textarea></dd>
                         </dl>
                         <button type="submit" class="btn btn-secondary">投稿する</button>
                         <a href="{{ route('dashbord') }}"><button type="button" class="btn btn-secondary">キャンセル</button></a>
