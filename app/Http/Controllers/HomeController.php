@@ -53,7 +53,10 @@ class HomeController extends Controller
         // dd($allusers);
 
         // Eloquentで紐づいているものを取り出す
-        $items = Article::with('user:id,name')->get();
+        $items = Article::with('user:id,name')
+                ->latest()
+                ->get();
+
         // $items = Article::where('user_id','!=',\Auth::user()->id)->with('user:id,name')->get();
         // dd($items);
 
