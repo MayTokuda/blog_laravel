@@ -55,18 +55,18 @@ img{
 }
 .show-img {
     width: 400px;
-   height: 300px;
-   object-fit:cover;
+    height: 300px;
+    object-fit:cover;
 }
 .small-img {
     width: 75px;
-   height: 55px;
-   object-fit:cover;
+    height: 55px;
+    object-fit:cover;
 }
 .prof-img {
     width: 85px;
-   height: 85px;
-   object-fit:cover;
+    height: 85px;
+    object-fit:cover;
 }
 .fv{
     background-size: cover;
@@ -115,6 +115,7 @@ background-color: #d8c8ae
     color: #fff;
     font-size: 100px;
     font-family: 'Sacramento', cursive;
+    font-weight: bold;
 }
 .header-title .content-link{
     display: flex;
@@ -220,7 +221,10 @@ textarea[name="body"]:focus {
 
 /* NavbarのBlog文字 */
 a.navbar-brand{
-    color: #d8c8ae
+    color: #d8c8ae;
+    font-family: 'Sacramento', cursive;
+    font-weight: bold;
+    transform: scaleX(1.5);
 }
 a.navbar-brand:hover{
     color: #738e99;
