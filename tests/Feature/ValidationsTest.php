@@ -84,8 +84,8 @@ class ValidationsTest extends TestCase
             'max_body_01'      => ['body', str_repeat('a', 201), false],
             'max_body_02'      => ['body', str_repeat('a', 200), true],
 
-            'required_image_01' => ['image', null, false],
-            'required_image_02' => ['image', '', false],
+            // 'required_image_01' => ['image', null, false],
+            // 'required_image_02' => ['image', '', false],
             // 'max_image_01'      => ['image', filesize(1025), false],
             // 'max_image_02'      => ['image', filesize(1024), true],
         ];
