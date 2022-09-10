@@ -95,7 +95,7 @@ background-color: #d8c8ae
 	width: auto;
 	height: auto;
 	z-index: -100;
-	background: url('poster.jpg') no-repeat;
+	/* background: url('poster.jpg') no-repeat; */
 	background-size: cover;
 }
 /* ----- 背景の上に表示するコンテンツ ----- */
