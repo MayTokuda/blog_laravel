@@ -25,8 +25,12 @@
                         @csrf 
                         <dl class="form-list">
                             <dt>画像</dt>
-                            
+                            @if($user->profile_image == 'no_image.jpg')
+                            <img id="sample1" class="user-img prof-img" src="{{ asset('no_image.jpg') }}" width="75vw"><br>
+                            @else
                             <img id="sample1" class="user-img prof-img" src="{{ asset('storage/' .$user->profile_image) }}" width="75vw"><br>
+                            @endif
+                            <!-- <img id="sample1" class="user-img prof-img" src="{{ asset('storage/' .$user->profile_image) }}" width="75vw"><br> -->
                             <!-- <input type="file" name="profile_image" id="file_photo" style="display:none;" value="{{$user->profile_image}}" accept="image/png,image/jpeg">
 
                             <dd><label class="img-label" for="file_photo">画像を選択</label></dd> -->
